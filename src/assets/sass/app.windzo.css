@@ -1,0 +1,18 @@
+.item .exact-active {
+  background: #634121;
+  color: #f2f2f2;
+}
+.item .exact-active:hover {
+  background: #634121 !important;
+  color: #f2f2f2;
+}
+
+body ::-moz-selection {
+  /* Code for Firefox */
+  color: white;
+  background: #634121;
+}
+body ::selection {
+  color: white;
+  background: #634121;
+}/*# sourceMappingURL=app.windzo.css.map */
