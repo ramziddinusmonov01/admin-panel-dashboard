@@ -58,7 +58,6 @@ onMounted(() => {
   Scrollbar.init(document.querySelector("#body-scroll"));
 })
 
-console.log('console');
 </script>
 
 <style>

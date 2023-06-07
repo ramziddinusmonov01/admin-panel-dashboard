@@ -128,11 +128,13 @@
               </li>
             </ul>
 
-            <div class="py-1">
+            <router-link to="/auth/login">
+              <div class="py-1">
               <a href="#"
                 class="block py-2 px-4 text-sm text-gray-700 dark:text-gray-200 hover:bg-primary hover:text-white">Sign
                 out</a>
             </div>
+            </router-link>
           </div>
         </transition>
       </div>

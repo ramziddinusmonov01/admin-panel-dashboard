@@ -557,6 +557,7 @@
         </div>
       </div>
     </div>
+
     <!--   Sarlavha matnini tahrirlash/-->
     <div>
       <div class="mt-5 w-full">
@@ -671,12 +672,43 @@
         </div>
       </div>
     </div>
+
     <!--   cartlarni tahrirlash/-->
-    <div>
-      <div class="mt-5 w-full">
+    <div class="mt-5 w-full">
+      <div class="flex justify-between">
         <h1 class="text-2xl text-gray-900 font-medium dark:text-gray-200">
           Cartlarni tahrirlash
         </h1>
+        <Modal :activeModal="activeModal" @open="changeActive" @close="closeModal" @submit="submitAdd" :isImage="true"
+          title="Yangi element qo'shish" subtitle="" btnTextSubmit="Saqlash">
+          <template v-slot:body>
+            <div class="space-y-5 pb-5">
+              <div class="space-y-3">
+                <p>Cart sarlavhasini kiriting</p>
+                <input type="text" placeholder=""
+                  class="p-2 border dark:border-gray-600 dark:bg-gray-700 w-full rounded outline-none" />
+              </div>
+              <div class="space-y-3">
+                <p>Cart matnini kiriting</p>
+                <input type="text" placeholder=""
+                  class="p-2 border dark:border-gray-600 dark:bg-gray-700 w-full rounded outline-none" />
+              </div>
+              <div class="space-y-3">
+                <p>Holati</p>
+                <label class="relative inline-flex items-center mr-5 cursor-pointer">
+                  <input type="checkbox" value="" class="sr-only peer" checked>
+                  <div
+                    class="w-11 h-6 bg-gray-200 rounded-full dark:peer-focus:ring-indigo-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-indigo-600">
+                  </div>
+                  <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300 select-none">Faol</span>
+                </label>
+              </div>
+            </div>
+          </template>
+          <template v-slot:button>
+            <span class="bg-green-500 pb-1 px-4 rounded-md text-4xl text-green-50">+</span>
+          </template>
+        </Modal>
       </div>
       <div class="overflow-x-auto dark:bg-gray-800">
         <div class="w-full">
@@ -796,12 +828,53 @@
         </div>
       </div>
     </div>
+
     <!--   qulayliklarni tahrirlash/-->
-    <div>
-      <div class="mt-5 w-full">
+    <div class="mt-5 w-full">
+      <div class="flex justify-between">
         <h1 class="text-2xl text-gray-900 font-medium dark:text-gray-200">
           Qulayliklarni tahrirlash
         </h1>
+        <Modal :activeModal="activeModal" @open="changeActive" @close="closeModal" @submit="submitAdd" :isImage="true"
+          title="Yangi element qo'shish" subtitle="" btnTextSubmit="Saqlash">
+          <template v-slot:body>
+            <div class="space-y-5 pb-5">
+              <div class="space-y-3">
+                <p>Cart sarlavhasini kiriting</p>
+                <input type="text" placeholder=""
+                  class="p-2 border dark:border-gray-600 dark:bg-gray-700 w-full rounded outline-none" />
+              </div>
+              <div class="space-y-3">
+                <p>Cart matnini kiriting</p>
+                <input type="text" placeholder=""
+                  class="p-2 border dark:border-gray-600 dark:bg-gray-700 w-full rounded outline-none" />
+              </div>
+              <div class="space-y-3">
+                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Rasm
+                  yuklash</label>
+                <input
+                  class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                  aria-describedby="file_input_help" id="file_input" type="file">
+                <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">SVG, PNG, JPG
+                  or
+                  GIF (MAX. 800x400px).</p>
+              </div>
+              <div class="space-y-3">
+                <p>Holati</p>
+                <label class="relative inline-flex items-center mr-5 cursor-pointer">
+                  <input type="checkbox" value="" class="sr-only peer" checked>
+                  <div
+                    class="w-11 h-6 bg-gray-200 rounded-full dark:peer-focus:ring-indigo-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-indigo-600">
+                  </div>
+                  <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300 select-none">Faol</span>
+                </label>
+              </div>
+            </div>
+          </template>
+          <template v-slot:button>
+            <span class="bg-green-500 pb-1 px-4 rounded-md text-4xl text-green-50">+</span>
+          </template>
+        </Modal>
       </div>
       <div class="overflow-x-auto dark:bg-gray-800">
         <div class="w-full">
@@ -941,6 +1014,7 @@
         </div>
       </div>
     </div>
+
     <!-- Saqlash/-->
     <div class="flex justify-end mb-4">
       <button type="button"
