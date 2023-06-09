@@ -55,11 +55,11 @@
                   class="w-full text-left block rounded-md p-3 hover:bg-gray-200 dark:hover:bg-gray-700">
                   Nima uchun bizni tanlashadi
                 </router-link>
-                <router-link to="/component/knowledge"
+                <router-link to="/component/works"
                   class="w-full text-left block rounded-md p-3 hover:bg-gray-200 dark:hover:bg-gray-700">
                   Biz qilgan ishlar
                 </router-link>
-                <router-link to="/component/organized"
+                <router-link to="/component/comments"
                   class="w-full text-left block rounded-md p-3 hover:bg-gray-200 dark:hover:bg-gray-700">
                   Mijozlarimiz fikri
                 </router-link>

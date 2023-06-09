@@ -22,15 +22,7 @@
           <template v-slot:body>
             <div class="space-y-5 pb-5">
               <div class="space-y-3">
-                <p>Cart sarlavhasini kiriting</p>
-                <input
-                  type="text"
-                  placeholder=""
-                  class="p-2 border dark:border-gray-600 dark:bg-gray-700 w-full rounded outline-none"
-                />
-              </div>
-              <div class="space-y-3">
-                <p>Cart matnini kiriting</p>
+                <p>Id ni kiriting</p>
                 <input
                   type="text"
                   placeholder=""
@@ -94,8 +86,7 @@
                 <tr
                   class="bg-gray-200 dark:bg-gray-700 dark:text-gray-400 text-gray-600 uppercase text-sm leading-normal"
                 >
-                  <th class="py-3 px-6 text-left">Sarlavha</th>
-                  <th class="py-3 px-6 text-left">Matni</th>
+                  <th class="py-3 px-6 text-left">Id</th>
                   <th class="py-3 px-6 text-left">Rasm</th>
                   <th class="py-3 px-6 text-center">Holati</th>
                   <th class="py-3 px-6 text-center">Actions</th>
@@ -105,17 +96,7 @@
                 <tr class="hover:bg-gray-100 dark:hover:bg-gray-500">
                   <td class="py-3 px-6 text-left">
                     <div class="flex items-center">
-                      <span class="text-base font-medium"
-                        >Bepul yetkazib berish</span
-                      >
-                    </div>
-                  </td>
-                  <td class="py-3 px-6 text-left">
-                    <div class="flex items-center">
-                      <span class="text-base font-medium"
-                        >Bizda siz istagan mebelni yetkazib berish xizmati
-                        mavjud</span
-                      >
+                      <span class="text-base font-medium">1</span>
                     </div>
                   </td>
                   <td class="py-3 px-6 text-left">
@@ -146,10 +127,7 @@
                           <div class="flex justify-start gap-12">
                             <div class="flex flex-col items-start gap-8">
                               <span class="font-medium text-lg flex-1"
-                                >Sarlavha</span
-                              >
-                              <span class="font-medium text-lg flex-1"
-                                >Matn</span
+                                >id</span
                               >
                               <span class="font-medium text-lg flex-1"
                                 >Rasm</span
@@ -160,11 +138,7 @@
                             </div>
                             <div class="flex flex-col items-start gap-4">
                               <span class="font-normal text-base flex-1"
-                                >Bepul yetkazib berish</span
-                              >
-                              <span class="font-normal text-base flex-1"
-                                >Bizda siz istagan mebelni yetkazib berish
-                                xizmati mavjud</span
+                                >1</span
                               >
                               <img src="@/assets/img/truck.png" alt="icon" />
                               <span
@@ -215,15 +189,7 @@
                         <template v-slot:body>
                           <div class="space-y-5 pb-5">
                             <div class="space-y-3">
-                              <p>Cart sarlavhasini kiriting</p>
-                              <input
-                                type="text"
-                                placeholder=""
-                                class="p-2 border dark:border-gray-600 dark:bg-gray-700 w-full rounded outline-none"
-                              />
-                            </div>
-                            <div class="space-y-3">
-                              <p>Cart matnini kiriting</p>
+                              <p>Idni kiriting</p>
                               <input
                                 type="text"
                                 placeholder=""
@@ -355,7 +321,7 @@ const breadcrumbs = [
     url: "/",
   },
   {
-    label: "Nima uchun bizni tanlashadi",
+    label: "Biz qilgan ishlar",
     url: "header",
   },
 ];

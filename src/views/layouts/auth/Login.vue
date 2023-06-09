@@ -2,45 +2,22 @@
   <div class="w-full h-screen">
     <div class="flex shadow rounded-md h-screen">
       <div class="bg-white dark:bg-gray-900 w-full">
-        <form>
+        <form @submit.prevent="submitForm">
           <div
             class="form-body lg:max-w-xl mx-auto lg:p-20 p-8 lg:mt-20 mt-5 space-y-8"
           >
-            <div class="form-head cursor-pointer" @click="$router.push('/')">
-              <img src="../../../assets/logo/logo.svg" alt="" class="w-10" />
-            </div>
             <div class="space-y-3">
               <h2 class="dark:text-white font-semibold text-gray-800 text-4xl">
                 Welcome, to Windzo<span class="text-primary">.</span>
               </h2>
-              <p class="dark:text-gray-400 text-gray-700">
-                Please enter your account to continue.
-              </p>
             </div>
-            <button
-              type="button"
-              class="dark:text-white text-gray-700 flex justify-center gap-2 dark:bg-gray-700 bg-gray-100 hover:bg-gray-100/50 p-2 w-full rounded-md"
-            >
-              <img
-                class="w-8"
-                src="../../../assets/logo/google-logo.svg"
-                alt=""
-              />
-              <p class="mt-1 dark:text-white text-gray-700">
-                Sign in with Google
-              </p>
-            </button>
-            <span class="flex items-center justify-center space-x-2">
-              <span class="h-px dark:bg-gray-600 bg-gray-200 w-full"></span>
-              <span class="font-normal text-gray-500">or </span>
-              <span class="h-px dark:bg-gray-600 bg-gray-200 w-full"></span>
-            </span>
             <div class="space-y-5">
               <div class="relative z-0 w-full mb-6 group">
                 <input
-                  type="email"
+                  id="username"
+                  type="text"
                   name="floating_email"
-                  id="floating_email"
+                  v-model="username"
                   class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-primary focus:outline-none focus:ring-0 focus:border-primary peer"
                   placeholder=" "
                   required
@@ -48,14 +25,15 @@
                 <label
                   for="floating_email"
                   class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary peer-focus:dark:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                  >Email address</label
+                  >username</label
                 >
               </div>
               <div class="relative z-0 w-full mb-6 group">
                 <input
                   type="password"
                   name="floating_password"
-                  id="floating_password"
+                  id="password"
+                  v-model="password"
                   class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-primary focus:outline-none focus:ring-0 focus:border-primary peer"
                   placeholder=" "
                   required
@@ -66,6 +44,12 @@
                   >Password</label
                 >
               </div>
+                <div
+                  v-show="inCorrect"
+                  class="incorrect text-red-500 text-sm dark:text-white"
+                >
+                  Login yoki parol xato
+                </div>
             </div>
             <div class="flex justify-between">
               <div class="flex items-start">
@@ -93,6 +77,8 @@
             </div>
 
             <button
+              @click="login()"
+              @dblclick="incorrect()"
               class="text-white bg-primary hover:bg-primary/80 p-3 w-full rounded-md"
             >
               Login, to continue
@@ -116,10 +102,68 @@
   </div>
 </template>
 
-<script>
-export default {};
+<script setup>
+import { ref } from "vue";
+const username = ref("");
+const password = ref("");
+const inCorrect = ref(false);
+function incorrect() {
+  let incorrect = document.querySelector(".incorrect");
+  incorrect.classList.add("show");
+  setTimeout(() => {
+    incorrect.classList.remove("show");
+  }, "1000");
+}
+function login() {
+  // axios orqali serverga so'rov jo'natiladi
+  fetch("http://fazl.karimjonov.uz/api/admin/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      user_name: username.value,
+      password: password.value,
+    }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      // Serverdan qaytarilgan javobni tekshirish
+      if (data.success) {
+        window.location.href = "/";
+      } else {
+        inCorrect.value = true;
+        incorrect();
+      }
+      localStorage.setItem('token', data.token)
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}
 </script>
 <style>
+.incorrect.show {
+  animation-name: shake, glow-red;
+  animation-duration: 0.7s, 0.35s;
+  animation-iteration-count: 1, 2;
+}
+@keyframes shake {
+  0%,
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(8px);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-8px);
+  }
+}
 /* custom pattern https://superdesigner.co/tools/css-backgrounds */
 .bg-wave {
   background: radial-gradient(

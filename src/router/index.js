@@ -14,6 +14,8 @@ import Assortiment from "../views/components/assortiment.vue";
 import Button from "../views/components/button.vue";
 import BuyurtmaBerish from "../views/components/buyurtmaBerish.vue";0
 import whyChoose from "../views/components/whyChoose.vue";
+import works from "../views/components/works.vue";
+import comments from "../views/components/comments.vue";
 // layouts
 import Blank from "../views/layouts/Blank.vue";
 
@@ -68,6 +70,18 @@ const routes = [
     name: "whyChoose",
     component: whyChoose,
     meta: { title: "whyChoose" + appname },
+  },
+  {
+    path: "/component/works",
+    name: "works",
+    component: works,
+    meta: { title: "works" + appname },
+  },
+  {
+    path: "/component/comments",
+    name: "comments",
+    component: comments,
+    meta: { title: "comments" + appname },
   },
 
 

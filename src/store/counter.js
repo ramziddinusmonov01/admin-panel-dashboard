@@ -22,5 +22,6 @@ export const useStore = defineStore("counter", () => {
     toggle()
     current.value = event.target.textContent
   }
-  return { languages, current, isOpen, categories, toggle, change };
+  ///////////////////////////get api//////////////////////////////////////////
+
 });
