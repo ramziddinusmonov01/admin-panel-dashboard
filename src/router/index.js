@@ -27,7 +27,7 @@ import Page404 from "../views/layouts/error/404.vue";
 import Page500 from "../views/layouts/error/500.vue";
 import PageMaintenance from "../views/layouts/error/maintenance.vue";
 
-var appname = " - Windzo Dashboard Admin Template";
+var appname = " - Fazl Mebel dashboard";
 
 const routes = [
   // Routes
