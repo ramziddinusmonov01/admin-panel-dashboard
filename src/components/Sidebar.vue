@@ -63,15 +63,19 @@
                   class="w-full text-left block rounded-md p-3 hover:bg-gray-200 dark:hover:bg-gray-700">
                   Mijozlarimiz fikri
                 </router-link>
-                <router-link to="/component/author-course"
+                <router-link to="/component/assortimentNav"
+                  class="w-full text-left block rounded-md p-3 hover:bg-gray-200 dark:hover:bg-gray-700">
+                  Assortiment category
+                </router-link>
+                <router-link to="/component/button"
                   class="w-full text-left block rounded-md p-3 hover:bg-gray-200 dark:hover:bg-gray-700">
                   Bepul maslahat olish
                 </router-link>
-                <router-link to="/component/author-features"
+                <router-link to="/component/customers"
                   class="w-full text-left block rounded-md p-3 hover:bg-gray-200 dark:hover:bg-gray-700">
                   Mijozlarimiz ichida
                 </router-link>
-                <router-link to="/component/payment"
+                <router-link to="/component/fikrlar"
                   class="w-full text-left block rounded-md p-3 hover:bg-gray-200 dark:hover:bg-gray-700">
                   Footer qismi
                 </router-link>
@@ -82,34 +86,16 @@
           <!-- after complete course -->
           <div class="item mt-3">
             <div class="item mt-3">
-            <router-link to="/component/after-course"
-              class="w-full text-left block rounded-md p-3  hover:bg-gray-200 dark:hover:bg-gray-700">
-              <div class="flex gap-4 ">
-                <Icon icon="gg:components" />
-                Ranglar
-              </div>
-            </router-link>
-          </div>
+              <router-link to="/component/settings"
+                class="w-full text-left block rounded-md p-3  hover:bg-gray-200 dark:hover:bg-gray-700">
+                <div class="flex gap-4 ">
+                  <Icon icon="gg:components" />
+                  Settings
+                </div>
+              </router-link>
+            </div>
           </div>
           <!-- faq -->
-          <div class="item mt-3">
-            <router-link to="/component/module-topics"
-              class="w-full text-left block rounded-md p-3 mt-3 hover:bg-gray-200 dark:hover:bg-gray-700">
-              <div class="flex gap-4 ">
-                <Icon icon="gg:components" />
-                Tugmalar
-              </div>
-            </router-link>
-          </div>
-          <div class="item mt-3">
-            <router-link to="/component/modules"
-              class="w-full text-left block rounded-md p-3  hover:bg-gray-200 dark:hover:bg-gray-700">
-              <div class="flex gap-4 ">
-                <Icon icon="gg:components" />
-                Chat
-              </div>
-            </router-link>
-          </div>
         </div>
       </div>
     </div>

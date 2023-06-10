@@ -68,12 +68,6 @@
                   >Remember for 30 days</label
                 >
               </div>
-              <button
-                @click="$router.push('/auth/forgot-password')"
-                class="text-sm dark:text-white hover:text-primary text-gray-700"
-              >
-                Forgot password?
-              </button>
             </div>
 
             <button
@@ -115,7 +109,6 @@ function incorrect() {
   }, "1000");
 }
 function login() {
-  // axios orqali serverga so'rov jo'natiladi
   fetch("http://fazl.karimjonov.uz/api/admin/login", {
     method: "POST",
     headers: {
@@ -128,14 +121,13 @@ function login() {
   })
     .then((response) => response.json())
     .then((data) => {
-      // Serverdan qaytarilgan javobni tekshirish
       if (data.success) {
+        localStorage.setItem('token', data.data.token)
         window.location.href = "/";
       } else {
         inCorrect.value = true;
         incorrect();
       }
-      localStorage.setItem('token', data.token)
     })
     .catch((error) => {
       console.error(error);

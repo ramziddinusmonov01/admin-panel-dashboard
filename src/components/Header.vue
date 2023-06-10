@@ -10,50 +10,49 @@
               d="M2.75 12.25h10.5m-10.5-4h10.5m-10.5-4h10.5" />
           </svg>
         </button>
-        <div
+        <!-- <div
           class="input-box border dark:bg-gray-900 lg:ml-0 ml-5 dark:border-gray-700 rounded-md hidden lg:w-search w-full box-border lg:flex md:flex focus-within:bg-gray-100 dark:focus-within:bg-gray-700">
           <span class="text-3xl p-2 text-gray-400">
             <Icon icon="ei:search" />
           </span>
           <input type="text" placeholder="Search..."
             class="p-3 w-full bg-white dark:bg-gray-900 dark:text-gray-400 rounded-md outline-none focus:bg-gray-100 dark:focus:bg-gray-700" />
-        </div>
+        </div> -->
       </div>
 
       <div class="mr-5 flex gap-3">
         <!-- btn dark mode -->
-
+        <!-- 
         <button class="lg:hidden block mr-5 text-2xl text-gray-500 relative">
           <i>
             <Icon icon="ic:outline-search" />
           </i>
-        </button>
+        </button> -->
 
-        <button @click="fullscreenToggle" class="mr-5 text-2xl text-gray-500 relative">
+        <!-- <button @click="fullscreenToggle" class="mr-5 text-2xl text-gray-500 relative">
           <i v-if="!fullscreenMode">
             <Icon icon="ic:outline-fullscreen" />
           </i>
           <i v-else>
             <Icon icon="ic:outline-fullscreen-exit" />
           </i>
-        </button>
+        </button> -->
 
-        <button @click="setTheme(true)" class="mr-5 text-2xl text-gray-500" v-if="!darkMode">
+        <!-- <button @click="setTheme(true)" class="mr-5 text-2xl text-gray-500" v-if="!darkMode">
           <Icon icon="ph:sun-dim" />
         </button>
         <button @click="setTheme(false)" v-else class="mr-5 text-2xl text-gray-500">
           <Icon icon="ri:moon-fill" />
-        </button>
+        </button> -->
         <!-- btn notification -->
-        <button @click="notifToggle" class="mr-5 text-2xl text-gray-500 relative">
+        <!-- <button @click="notifToggle" class="mr-5 text-2xl text-gray-500 relative">
           <i class="bg-red-500 rounded-full p-1.5 border border-white dark:border-gray-700 -mt-1 absolute"></i>
           <Icon icon="clarity:notification-line" />
-        </button>
+        </button> -->
 
-        <transition name="fade">
+        <!-- <transition name="fade">
           <div id="notificaitons" v-show="notification"
             class="block absolute lg:right-56 right-28 mt-12 z-50 w-96 border dark:border-gray-700 bg-white dark:bg-gray-800 rounded divide-y dark:divide-gray-700 divide-gray-100 shadow">
-            <!-- head notification -->
             <div class="flex justify-between p-3 text-gray-800 dark:text-gray-300">
               <h2>Notifications</h2>
               <button class="text-blue-500 text-sm">Mark all as Read</button>
@@ -87,7 +86,7 @@
               </button>
             </div>
           </div>
-        </transition>
+        </transition> -->
 
         <button @blur="menuToggleBlur" @click="menuToggle">
           <div class="user-avatar flex p-1 cursor-pointer rounded-md">
@@ -110,30 +109,30 @@
         <transition name="fade">
           <div id="dropdownSmall" v-show="menu"
             class="block absolute right-10 mt-12 z-50 w-52 border dark:border-gray-700 bg-white dark:bg-gray-800 rounded divide-y dark:divide-gray-700 divide-gray-100 shadow">
-            <div class="py-3 px-4 text-sm text-gray-900 dark:text-gray-200">
+            <!-- <div class="py-3 px-4 text-sm text-gray-900 dark:text-gray-200">
               <div>Logged As</div>
               <div class="font-medium truncate">Moh Sahrullah</div>
-            </div>
+            </div> -->
             <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownSmallButton">
               <li>
                 <a href="#" class="block py-2 px-4 hover:bg-primary hover:text-white">User Profile</a>
               </li>
-              <li>
+              <!-- <li>
                 <a href="#" class="block py-2 px-4 hover:bg-primary hover:text-white">Settings</a>
-              </li>
+              </li> -->
 
-              <li>
+              <!-- <li>
                 <a href="https://github.com/sahrullahh"
                   class="block py-2 px-4 hover:bg-primary hover:text-white">Github</a>
-              </li>
+              </li> -->
             </ul>
 
-            <router-link to="/auth/login">
+            <router-link to="/auth/login" @click="removeToken()">
               <div class="py-1">
-              <a href="#"
-                class="block py-2 px-4 text-sm text-gray-700 dark:text-gray-200 hover:bg-primary hover:text-white">Sign
-                out</a>
-            </div>
+                <a href="#"
+                  class="block py-2 px-4 text-sm text-gray-700 dark:text-gray-200 hover:bg-primary hover:text-white">Sign
+                  out</a>
+              </div>
             </router-link>
           </div>
         </transition>
@@ -144,97 +143,99 @@
 <style></style>
 <script>
 import { Icon } from "@iconify/vue";
-import { fullscreen } from "@/helper/fullscreen";
-import { setDarkMode, loadDarkMode } from "@/helper/theme";
+// import { fullscreen } from "@/helper/fullscreen";
+// import { setDarkMode, loadDarkMode } from "@/helper/theme";
 export default {
   data() {
     return {
       menu: false,
-      darkMode: false,
-      notification: false,
-      fullscreenMode: false,
+      // darkMode: false,
+      // notification: false,
+      // fullscreenMode: false,
 
-      notifList: [
-        {
-          name: "Elizabeth Begum",
-          image: "user1.png",
-          message:
-            "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora culpa blanditiis neque animi sequi sunt incidunt beatae? Aperiam facilis consectetur,",
-          hours: "12 hours ago",
-        },
-        {
-          name: "Ethan Roger",
-          image: "user2.png",
-          message:
-            "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora culpa blanditiis neque animi sequi sunt incidunt beatae? Aperiam facilis consectetur,",
-          hours: "12 hours ago",
-        },
-        {
-          name: "Taylor neal",
-          image: "user4.png",
-          message:
-            "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora culpa blanditiis neque animi sequi sunt incidunt beatae? Aperiam facilis consectetur,",
-          hours: "2 days hours ago",
-        },
-      ],
+      // notifList: [
+      //   {
+      //     name: "Elizabeth Begum",
+      //     image: "user1.png",
+      //     message:
+      //       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora culpa blanditiis neque animi sequi sunt incidunt beatae? Aperiam facilis consectetur,",
+      //     hours: "12 hours ago",
+      //   },
+      //   {
+      //     name: "Ethan Roger",
+      //     image: "user2.png",
+      //     message:
+      //       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora culpa blanditiis neque animi sequi sunt incidunt beatae? Aperiam facilis consectetur,",
+      //     hours: "12 hours ago",
+      //   },
+      //   {
+      //     name: "Taylor neal",
+      //     image: "user4.png",
+      //     message:
+      //       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora culpa blanditiis neque animi sequi sunt incidunt beatae? Aperiam facilis consectetur,",
+      //     hours: "2 days hours ago",
+      //   },
+      // ],
     };
   },
   components: {
     Icon,
   },
-  watch: {
-    $route() {
-      this.menu = false;
-      this.notification = false;
-    },
-  },
+  // watch: {
+  //   $route() {
+  //     this.menu = false;
+  //     this.notification = false;
+  //   },
+  // },
   methods: {
-    fullscreen,
-    setDarkMode,
-    loadDarkMode,
-
+    // fullscreen,
+    // setDarkMode,
+    // loadDarkMode,
+    removeToken() {
+      localStorage.removeItem("token");
+    },
     menuToggle: function () {
       this.menu = !this.menu;
     },
     menuToggleBlur: function () {
       this.menu = false;
     },
-    notifToggle: function () {
-      this.notification = !this.notification;
-    },
-    notifToggleBlur: function () {
-      this.notification = false;
-    },
-    limitText(message) {
-      const text =
-        message.length > 25 ? message.substring(0, 25) + "..." : message;
-      return text;
-    },
-    fullscreenToggle() {
-      this.fullscreenMode = !this.fullscreenMode;
-      this.fullscreen(this.fullscreenMode);
-    },
+    // notifToggle: function () {
+    //   this.notification = !this.notification;
+    // },
+    // notifToggleBlur: function () {
+    //   this.notification = false;
+    // },
+    // limitText(message) {
+    //   const text =
+    //     message.length > 25 ? message.substring(0, 25) + "..." : message;
+    //   return text;
+    // },
+    // fullscreenToggle() {
+    //   this.fullscreenMode = !this.fullscreenMode;
+    //   this.fullscreen(this.fullscreenMode);
+    // },
     // set theme to dark and light
-    setTheme(bool) {
-      this.darkMode = bool;
-      this.setDarkMode(bool);
-    },
+    // setTheme(bool) {
+    //   this.darkMode = bool;
+    //   this.setDarkMode(bool);
+    // },
 
-    imageAssets(url) {
-      return require("@/assets/img/" + url);
-    },
+    // imageAssets(url) {
+    //   return require("@/assets/img/" + url);
+    // },
   },
   mounted() {
     // get theme dark or light with loadDarkMode()
-    this.darkMode = this.loadDarkMode();
+    // this.darkMode = this.loadDarkMode();
 
-    document.onfullscreenchange = (event) => {
-      if (document.fullscreenElement) {
-        this.fullscreenMode = true;
-      } else {
-        this.fullscreenMode = false;
-      }
-    };
+    // document.onfullscreenchange = (event) => {
+    //   if (document.fullscreenElement) {
+    //     this.fullscreenMode = true;
+    //   } else {
+    //     this.fullscreenMode = false;
+    //   }
+    // };
   },
 };
 </script>

@@ -7,21 +7,31 @@
     <div class="mt-5 w-full">
       <div class="flex justify-between">
         <h1 class="text-2xl text-gray-900 font-medium dark:text-gray-200">
-          gallery
+          Assortiment nav
         </h1>
         <Modal :activeModal="activeModal" @open="changeActive" @close="closeModal" @submit="submitAdd" :isImage="true"
           title="Yangi element qo'shish" subtitle="" btnTextSubmit="Saqlash">
           <template v-slot:body>
             <div class="space-y-5 pb-5">
               <div class="space-y-3">
-                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">rasm
-                  yuklang</label>
-                <input
-                  class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                  aria-describedby="file_input_help" id="file_input" type="file" />
-                <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">
-                  SVG, PNG, JPG or GIF (MAX. 800x400px).
-                </p>
+                <p>name kiriting uz</p>
+                <input type="text" placeholder=""
+                  class="p-2 border dark:border-gray-600 dark:bg-gray-700 w-full rounded outline-none" />
+              </div>
+              <div class="space-y-3">
+                <p>title kiriting ru</p>
+                <input type="text" placeholder=""
+                  class="p-2 border dark:border-gray-600 dark:bg-gray-700 w-full rounded outline-none" />
+              </div>
+              <div class="space-y-3">
+                <p>title kiriting en</p>
+                <input type="text" placeholder=""
+                  class="p-2 border dark:border-gray-600 dark:bg-gray-700 w-full rounded outline-none" />
+              </div>
+              <div class="space-y-3">
+                <p>slug</p>
+                <input type="text" placeholder=""
+                  class="p-2 border dark:border-gray-600 dark:bg-gray-700 w-full rounded outline-none" />
               </div>
               <div class="space-y-3">
                 <p>Holati</p>
@@ -55,11 +65,11 @@
               </tr>
             </thead>
             <tbody class="text-gray-600 text-sm font-light">
-              <!--  rasm tahrirlash/-->
+              <!-- title  tahrirlash/-->
               <tr class="hover:bg-gray-100 dark:hover:bg-gray-500">
                 <td class="py-3 px-6 text-left">
                   <div class="flex items-center">
-                    <span class="text-base font-medium">rasm footer</span>
+                    <span class="text-base font-medium">name</span>
                   </div>
                 </td>
                 <td class="py-3 px-6 text-center">
@@ -75,11 +85,18 @@
                       <template v-slot:body>
                         <div class="flex justify-start gap-12">
                           <div class="flex flex-col items-start gap-6">
-                            <span class="font-medium text-lg flex-1">rasm</span>
+                            <span class="font-medium text-lg flex-1">Title uz</span>
+                            <span class="font-medium text-lg flex-1">Title ru</span>
+                            <span class="font-medium text-lg flex-1">Title en</span>
                             <span class="font-medium text-lg flex-1">Holati</span>
                           </div>
                           <div class="flex flex-col items-start gap-6">
-                            <img src="../../assets/img/star.png" alt="img">
+                            <span class="font-normal text-base flex-1">Andijon shaxar,
+                              boychechak 4 uz</span>
+                            <span class="font-normal text-base flex-1">Andijon shaxar,
+                              boychechak ru</span>
+                            <span class="font-normal text-base flex-1">Andijon shaxar,
+                              boychechak en</span>
                             <span class="bg-green-200 text-green-700 py-1 px-4 rounded-full text-xs">Faol</span>
                           </div>
                         </div>
@@ -97,19 +114,24 @@
                       </template>
                     </Modal>
                     <!-- edit -->
-                    <Modal :activeModal="activeModal" @open="changeActive" @close="closeModal" @submit="submitEdit"
+                    <Modal :activeModal="activeModal" @open="changeActive" @close="closeModal" @submit="submitEdit()"
                       :isImage="true" title="Tahrirlash" subtitle="Joylashuvni tahrirlash" btnTextSubmit="Saqlash">
                       <template v-slot:body>
                         <div class="space-y-5 pb-5">
                           <div class="space-y-3">
-                            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                              for="file_input">rasm yuklang</label>
-                            <input
-                              class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                              aria-describedby="file_input_help" id="file_input" type="file" />
-                            <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">
-                              SVG, PNG, JPG or GIF (MAX. 800x400px).
-                            </p>
+                            <p>Yangi Title kiriting uz</p>
+                            <input type="text" placeholder=""
+                              class="p-2 border dark:border-gray-600 dark:bg-gray-700 w-full rounded outline-none" />
+                          </div>
+                          <div class="space-y-3">
+                            <p>Yangi Title kiriting ru</p>
+                            <input type="text" placeholder=""
+                              class="p-2 border dark:border-gray-600 dark:bg-gray-700 w-full rounded outline-none" />
+                          </div>
+                          <div class="space-y-3">
+                            <p>Yangi Title kiriting en</p>
+                            <input type="text" placeholder=""
+                              class="p-2 border dark:border-gray-600 dark:bg-gray-700 w-full rounded outline-none" />
                           </div>
                           <div class="space-y-3">
                             <p>Holati</p>

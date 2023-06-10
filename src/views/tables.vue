@@ -1,4 +1,4 @@
-import Tables from '@/components/Tables.vue';
+<!-- import Tables from '@/components/Tables.vue';
 
 <template>
   <div>
@@ -12,4 +12,4 @@ import Tables from "@/components/Tables.vue";
 components: {
   Tables
 }
-</script>
+</script> -->

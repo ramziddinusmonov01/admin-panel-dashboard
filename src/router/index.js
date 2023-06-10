@@ -1,23 +1,26 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 // Default Pages
-import Dashboard from "../views/Dashboard.vue";
 // Component Pages
-import Login from "../views/layouts/auth/Login.vue";
-import Register from "../views/layouts/auth/Register.vue";
-import ForgotPassword from "../views/layouts/auth/forgot-password.vue";
 
 // pages 
+import Dashboard from "../views/Dashboard.vue";
+import Login from "../views/layouts/auth/Login.vue";
+import Register from "../views/layouts/auth/Register.vue";
+import Settings from "../views/components/settings.vue";
 import Header from "../views/components/header.vue";
 import aboutUs from "../views/components/aboutUs.vue";
 import Assortiment from "../views/components/assortiment.vue";
 import Button from "../views/components/button.vue";
-import BuyurtmaBerish from "../views/components/buyurtmaBerish.vue";0
+import BuyurtmaBerish from "../views/components/buyurtmaBerish.vue"; 0
 import whyChoose from "../views/components/whyChoose.vue";
 import works from "../views/components/works.vue";
 import comments from "../views/components/comments.vue";
+import customers from "../views/components/customers.vue";
+import fikrlar from "../views/components/fikrlar.vue";
+import assortimentNav from "../views/components/assortimentNav.vue";
 // layouts
-import Blank from "../views/layouts/Blank.vue";
+// import Blank from "../views/layouts/Blank.vue";
 
 // error page
 import Page404 from "../views/layouts/error/404.vue";
@@ -34,12 +37,35 @@ const routes = [
     component: Dashboard,
     meta: { title: "Dashboard " + appname },
   },
-
+  {
+    path: "/component/assortimentNav",
+    name: "assortimentNav",
+    component: assortimentNav,
+    meta: { title: "assortimentNav" + appname },
+  },
+  {
+    path: "/component/fikrlar",
+    name: "fikrlar",
+    component: fikrlar,
+    meta: { title: "fikrlar" + appname },
+  },
   {
     path: "/component/aboutUs",
     name: "aboutUs",
     component: aboutUs,
     meta: { title: "aboutUs" + appname },
+  },
+  {
+    path: "/component/customers",
+    name: "customers",
+    component: customers,
+    meta: { title: "customers" + appname },
+  },
+  {
+    path: "/component/settings",
+    name: "Settings",
+    component: Settings,
+    meta: { title: "Settings" + appname },
   },
   {
     path: "/component/header",
@@ -87,12 +113,12 @@ const routes = [
 
   // layouts
 
-  {
-    path: "/Blank",
-    name: "Blank Page",
-    component: Blank,
-    meta: { title: "Blank Page" + appname },
-  },
+  // {
+  //   path: "/Blank",
+  //   name: "Blank Page",
+  //   component: Blank,
+  //   meta: { title: "Blank Page" + appname },
+  // },
 
   {
     path: "/auth/login",
@@ -105,12 +131,6 @@ const routes = [
     name: "Register",
     component: Register,
     meta: { title: "Register" + appname, hideNav: true },
-  },
-  {
-    path: "/auth/forgot-password",
-    name: "ForgotPassword",
-    component: ForgotPassword,
-    meta: { title: "i Forgot Password" + appname, hideNav: true },
   },
   // layout/error
   // default page 404

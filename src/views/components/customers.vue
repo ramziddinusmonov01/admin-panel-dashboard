@@ -7,7 +7,7 @@
     <div class="mt-5 w-full">
       <div class="flex justify-between">
         <h1 class="text-2xl text-gray-900 font-medium dark:text-gray-200">
-          gallery
+          customers
         </h1>
         <Modal :activeModal="activeModal" @open="changeActive" @close="closeModal" @submit="submitAdd" :isImage="true"
           title="Yangi element qo'shish" subtitle="" btnTextSubmit="Saqlash">
