@@ -8,7 +8,7 @@ import Dashboard from "../views/Dashboard.vue";
 import Login from "../views/layouts/auth/Login.vue";
 import Register from "../views/layouts/auth/Register.vue";
 import Settings from "../views/components/settings.vue";
-import Header from "../views/components/header.vue";
+import qulayliklar from "../views/components/qulayliklar.vue";
 import aboutUs from "../views/components/aboutUs.vue";
 import Assortiment from "../views/components/assortiment.vue";
 import Button from "../views/components/button.vue";
@@ -68,10 +68,10 @@ const routes = [
     meta: { title: "Settings" + appname },
   },
   {
-    path: "/component/header",
-    name: "Header",
-    component: Header,
-    meta: { title: "Header" + appname },
+    path: "/qulayliklar",
+    name: "qulayliklar",
+    component: qulayliklar,
+    meta: { title: "qulayliklar" + appname },
   },
   {
     path: "/component/assortiment",

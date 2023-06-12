@@ -3,15 +3,6 @@
     <!-- breadcump /-->
     <breadcump :items="breadcrumbs"></breadcump>
 
-    <!-- title /-->
-    <div class="mt-5 w-full">
-      <div class="flex justify-between">
-        <h1 class="text-2xl text-gray-900 font-medium dark:text-gray-200">
-          Header
-        </h1>
-      </div>
-    </div>
-
     <!-- settingsn tahrirlash/-->
     <div class="overflow-x-auto dark:bg-gray-800">
       <div class="w-full">
@@ -20,22 +11,20 @@
             <thead>
               <tr class="bg-gray-200 dark:bg-gray-700 dark:text-gray-400 text-gray-600 uppercase text-sm leading-normal">
                 <th class="py-3 px-6 text-left">komponentalar</th>
-                <th class="py-3 px-6 text-center">Holati</th>
+                <th class="py-3 px-6 text-left">Holati</th>
                 <th class="py-3 px-6 text-center">Actions</th>
               </tr>
             </thead>
             <tbody class="text-gray-600 text-sm font-light">
               <!-- title  tahrirlash/-->
-              <tr class="hover:bg-gray-100 dark:hover:bg-gray-500">
+              <tr class="hover:bg-gray-100 dark:hover:bg-gray-500" v-for="header in headers?.data" :key="header.id">
                 <td class="py-3 px-6 text-left">
                   <div class="flex items-center">
-                    <span class="text-base font-medium">Title</span>
+                    <span class="text-base font-medium">title</span>
                   </div>
                 </td>
-                <td class="py-3 px-6 text-center">
-                  <button class="bg-green-200 text-green-700 py-1 px-4 rounded-full text-xs">
-                    Faol
-                  </button>
+                <td class="py-3 px-6 text-left">
+                  <span class="text-base font-medium">{{ header.title_uz }}</span>
                 </td>
                 <td class="py-3 px-6 text-center">
                   <div class="flex items-center justify-center">
@@ -45,16 +34,14 @@
                       <template v-slot:body>
                         <div class="flex justify-start gap-12">
                           <div class="flex flex-col items-start gap-6">
-                            <span class="font-medium text-lg flex-1">Title uz</span>
-                            <span class="font-medium text-lg flex-1">Title ru</span>
-                            <span class="font-medium text-lg flex-1">Title en</span>
-                            <span class="font-medium text-lg flex-1">Holati</span>
+                            <span class="font-medium text-lg flex-1">title uz</span>
+                            <span class="font-medium text-lg flex-1">title ru</span>
+                            <span class="font-medium text-lg flex-1">title en</span>
                           </div>
                           <div class="flex flex-col items-start gap-6">
-                            <span class="font-normal text-base flex-1">Andijon shaxar, boychechak 4 uz</span>
-                            <span class="font-normal text-base flex-1">Andijon shaxar, boychechak ru</span>
-                            <span class="font-normal text-base flex-1">Andijon shaxar, boychechak en</span>
-                            <span class="bg-green-200 text-green-700 py-1 px-4 rounded-full text-xs">Faol</span>
+                            <span class="font-normal text-base flex-1">{{ header.title_uz }}</span>
+                            <span class="font-normal text-base flex-1">{{ header.title_ru }}</span>
+                            <span class="font-normal text-base flex-1">{{ header.title_en }}</span>
                           </div>
                         </div>
                       </template>
@@ -71,35 +58,24 @@
                       </template>
                     </Modal>
                     <!-- edit -->
-                    <Modal :activeModal="activeModal" @open="changeActive" @close="closeModal" @submit="submitEdit()"
+                    <Modal :activeModal="activeModal" @submit="closeModal" @open="changeActive" @close="closeModal"
                       :isImage="true" title="Tahrirlash" subtitle="Joylashuvni tahrirlash" btnTextSubmit="Saqlash">
                       <template v-slot:body>
                         <div class="space-y-5 pb-5">
                           <div class="space-y-3">
-                            <p>Yangi Title kiriting uz</p>
-                            <input type="text" placeholder=""
+                            <p>Yangi Joylashuvni kiriting uz</p>
+                            <input type="text" placeholder="" :value="title_uz" @input="title_uz = $event.target.value"
                               class="p-2 border dark:border-gray-600 dark:bg-gray-700 w-full rounded outline-none" />
                           </div>
                           <div class="space-y-3">
-                            <p>Yangi Title kiriting ru</p>
-                            <input type="text" placeholder=""
+                            <p>Yangi Joylashuvni kiriting ru</p>
+                            <input type="text" placeholder="" :value="title_ru" @input="title_ru = $event.target.value"
                               class="p-2 border dark:border-gray-600 dark:bg-gray-700 w-full rounded outline-none" />
                           </div>
                           <div class="space-y-3">
-                            <p>Yangi Title kiriting en</p>
-                            <input type="text" placeholder=""
+                            <p>Yangi Joylashuvni kiriting en</p>
+                            <input type="text" placeholder="" :value="title_en" @input="title_en = $event.target.value"
                               class="p-2 border dark:border-gray-600 dark:bg-gray-700 w-full rounded outline-none" />
-                          </div>
-                          <div class="space-y-3">
-                            <p>Holati</p>
-                            <label class="relative inline-flex items-center mr-5 cursor-pointer">
-                              <input type="checkbox" value="" class="sr-only peer" checked />
-                              <div
-                                class="w-11 h-6 bg-gray-200 rounded-full dark:peer-focus:ring-indigo-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-indigo-600">
-                              </div>
-                              <span
-                                class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300 select-none">Faol</span>
-                            </label>
                           </div>
                         </div>
                       </template>
@@ -112,33 +88,18 @@
                         </div>
                       </template>
                     </Modal>
-                    <!-- delete -->
-                    <Modal :activeModal="activeModal" @open="changeActive" @close="closeModal" @submit="submitDelete"
-                      :isImage="true" title="O'chirish" subtitle="Siz haqiqatdan ham bu elementi o'chirishni xohlaysizmi"
-                      btnTextSubmit="O'chirish" btnColorSubmit="bg-red-500">
-                      <template v-slot:button>
-                        <div class="w-4 mr-2 transform hover:text-red-500 hover:scale-110">
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                              d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                          </svg>
-                        </div>
-                      </template>
-                    </Modal>
                   </div>
                 </td>
               </tr>
               <!-- desc tahrirlash/-->
-              <tr class="hover:bg-gray-100 dark:hover:bg-gray-500">
+              <tr class="hover:bg-gray-100 dark:hover:bg-gray-500" v-for="header in headers?.data" :key="header.id">
                 <td class="py-3 px-6 text-left">
                   <div class="flex items-center">
                     <span class="text-base font-medium">Description</span>
                   </div>
                 </td>
-                <td class="py-3 px-6 text-center">
-                  <button class="bg-red-200 text-red-700 py-1 px-4 rounded-full text-xs">
-                    Nofaol
-                  </button>
+                <td class="py-3 px-6 text-left">
+                  <span class="text-base font-medium">{{ header.description_uz }}</span>
                 </td>
                 <td class="py-3 px-6 text-center">
                   <div class="flex items-center justify-center">
@@ -151,13 +112,11 @@
                             <span class="font-medium text-lg flex-1">desc uz</span>
                             <span class="font-medium text-lg flex-1">desc ru</span>
                             <span class="font-medium text-lg flex-1">desc en</span>
-                            <span class="font-medium text-lg flex-1">Holati</span>
                           </div>
                           <div class="flex flex-col items-start gap-6">
-                            <span class="font-normal text-base flex-1">desc uz</span>
-                            <span class="font-normal text-base flex-1">desc ru</span>
-                            <span class="font-normal text-base flex-1">desc en</span>
-                            <span class="bg-green-200 text-green-700 py-1 px-4 rounded-full text-xs">Faol</span>
+                            <span class="font-normal text-base flex-1">{{ header.description_uz }}</span>
+                            <span class="font-normal text-base flex-1">{{ header.description_ru }}</span>
+                            <span class="font-normal text-base flex-1">{{ header.description_en }}</span>
                           </div>
                         </div>
                       </template>
@@ -174,35 +133,24 @@
                       </template>
                     </Modal>
                     <!-- edit -->
-                    <Modal :activeModal="activeModal" @open="changeActive" @close="closeModal" @submit="submitEdit"
+                    <Modal :activeModal="activeModal" @submit="closeModal" @open="changeActive" @close="closeModal"
                       :isImage="true" title="Tahrirlash" subtitle="Joylashuvni tahrirlash" btnTextSubmit="Saqlash">
                       <template v-slot:body>
                         <div class="space-y-5 pb-5">
                           <div class="space-y-3">
-                            <p>uz kiriting</p>
-                            <input type="text" placeholder=""
+                            <p>Yangi Joylashuvni kiriting uz</p>
+                            <input type="text" placeholder="" :value="desc_uz" @input="desc_uz = $event.target.value"
                               class="p-2 border dark:border-gray-600 dark:bg-gray-700 w-full rounded outline-none" />
                           </div>
                           <div class="space-y-3">
-                            <p>uz ish vaqtini kiriting</p>
-                            <input type="text" placeholder=""
+                            <p>Yangi Joylashuvni kiriting ru</p>
+                            <input type="text" placeholder="" :value="desc_ru" @input="desc_ru = $event.target.value"
                               class="p-2 border dark:border-gray-600 dark:bg-gray-700 w-full rounded outline-none" />
                           </div>
                           <div class="space-y-3">
-                            <p>en ish vaqtini kiriting</p>
-                            <input type="text" placeholder=""
+                            <p>Yangi Joylashuvni kiriting en</p>
+                            <input type="text" placeholder="" :value="desc_en" @input="desc_en = $event.target.value"
                               class="p-2 border dark:border-gray-600 dark:bg-gray-700 w-full rounded outline-none" />
-                          </div>
-                          <div class="space-y-3">
-                            <p>Holati</p>
-                            <label class="relative inline-flex items-center mr-5 cursor-pointer">
-                              <input type="checkbox" value="" class="sr-only peer" checked />
-                              <div
-                                class="w-11 h-6 bg-gray-200 rounded-full dark:peer-focus:ring-indigo-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-indigo-600">
-                              </div>
-                              <span
-                                class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300 select-none">Faol</span>
-                            </label>
                           </div>
                         </div>
                       </template>
@@ -215,33 +163,18 @@
                         </div>
                       </template>
                     </Modal>
-                    <!-- delete -->
-                    <Modal :activeModal="activeModal" @open="changeActive" @close="closeModal" @submit="submitDelete"
-                      :isImage="true" title="O'chirish" subtitle="Siz haqiqatdan ham bu elementi o'chirishni xohlaysizmi"
-                      btnTextSubmit="O'chirish" btnColorSubmit="bg-red-500">
-                      <template v-slot:button>
-                        <div class="w-4 mr-2 transform hover:text-red-500 hover:scale-110">
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                              d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                          </svg>
-                        </div>
-                      </template>
-                    </Modal>
                   </div>
                 </td>
               </tr>
               <!--  rasm tahrirlash/-->
-              <tr class="hover:bg-gray-100 dark:hover:bg-gray-500">
+              <tr class="hover:bg-gray-100 dark:hover:bg-gray-500" v-for="header in headers?.data" :key="header.id">
                 <td class="py-3 px-6 text-left">
                   <div class="flex items-center">
-                    <span class="text-base font-medium">Logo footer</span>
+                    <span class="text-base font-medium">Image Header</span>
                   </div>
                 </td>
-                <td class="py-3 px-6 text-center">
-                  <button class="bg-green-200 text-green-700 py-1 px-4 rounded-full text-xs">
-                    Faol
-                  </button>
+                <td class="py-3 px-6 text-left">
+                  <img class="w-8" :src="header.image" alt="">
                 </td>
                 <td class="py-3 px-6 text-center">
                   <div class="flex items-center justify-center">
@@ -252,11 +185,9 @@
                         <div class="flex justify-start gap-12">
                           <div class="flex flex-col items-start gap-6">
                             <span class="font-medium text-lg flex-1">rasm</span>
-                            <span class="font-medium text-lg flex-1">Holati</span>
                           </div>
                           <div class="flex flex-col items-start gap-6">
-                            <img src="../../assets/img/star.png" alt="img">
-                            <span class="bg-green-200 text-green-700 py-1 px-4 rounded-full text-xs">Faol</span>
+                            <img :src="header.image" alt="img">
                           </div>
                         </div>
                       </template>
@@ -273,30 +204,19 @@
                       </template>
                     </Modal>
                     <!-- edit -->
-                    <Modal :activeModal="activeModal" @open="changeActive" @close="closeModal" @submit="submitEdit"
-                      :isImage="true" title="Tahrirlash" subtitle="Joylashuvni tahrirlash" btnTextSubmit="Saqlash">
+                    <Modal :activeModal="activeModal" @open="changeActive" @close="closeModal" @submit="closeModal"
+                      :isImage="true" title="Tahrirlash" subtitle="Header Logoni tahrirlash" btnTextSubmit="Saqlash">
                       <template v-slot:body>
                         <div class="space-y-5 pb-5">
                           <div class="space-y-3">
                             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                               for="file_input">rasm yuklang</label>
-                            <input
+                            <input @change="headerImg = $event.target.files[0]"
                               class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                               aria-describedby="file_input_help" id="file_input" type="file" />
                             <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">
                               SVG, PNG, JPG or GIF (MAX. 800x400px).
                             </p>
-                          </div>
-                          <div class="space-y-3">
-                            <p>Holati</p>
-                            <label class="relative inline-flex items-center mr-5 cursor-pointer">
-                              <input type="checkbox" value="" class="sr-only peer" checked />
-                              <div
-                                class="w-11 h-6 bg-gray-200 rounded-full dark:peer-focus:ring-indigo-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-indigo-600">
-                              </div>
-                              <span
-                                class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300 select-none">Faol</span>
-                            </label>
                           </div>
                         </div>
                       </template>
@@ -305,19 +225,6 @@
                           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                               d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-                          </svg>
-                        </div>
-                      </template>
-                    </Modal>
-                    <!-- delete -->
-                    <Modal :activeModal="activeModal" @open="changeActive" @close="closeModal" @submit="submitDelete"
-                      :isImage="true" title="O'chirish" subtitle="Siz haqiqatdan ham bu elementi o'chirishni xohlaysizmi"
-                      btnTextSubmit="O'chirish" btnColorSubmit="bg-red-500">
-                      <template v-slot:button>
-                        <div class="w-4 mr-2 transform hover:text-red-500 hover:scale-110">
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                              d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                           </svg>
                         </div>
                       </template>
@@ -333,9 +240,9 @@
 
     <!-- Saqlash/-->
     <div class="flex justify-end mb-4">
-      <button type="button"
+      <button type="button" @click="sendEdit()"
         class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
-        Saqlash
+        serverga yuborish
       </button>
     </div>
   </div>
@@ -343,7 +250,6 @@
 
 <script setup>
 import { ref } from "vue";
-import { useStore } from "@/store/counter";
 import Modal from "@/components/modal.vue";
 import Breadcump from "@/components/Breadcump.vue";
 import {
@@ -354,18 +260,53 @@ import {
   submitAdd,
   submitEdit,
   submitDelete,
+  submitEditHeader,
 } from "@/helper/active-modal";
-const store = useStore();
 const breadcrumbs = [
   {
     label: "Sahifalarni tahrirlash",
     url: "/",
   },
   {
-    label: "Bosh sahifa",
+    label: "Qulayliklar",
     url: "header",
   },
 ];
+let adminUrl = "http://fazl.karimjonov.uz/api/admin"
+let headers = ref([])
+const token = localStorage.getItem('token')
+
+async function getData() {
+  fetch(adminUrl + "/header/content", {
+    headers: {
+      "token": token
+    }
+  }).then(res => res.json()).then(data => {
+    headers.value = data
+  })
+}
+
+getData()
+const title_uz = ref('')
+const title_ru = ref('')
+const title_en = ref('')
+const desc_uz = ref('')
+const desc_ru = ref('')
+const desc_en = ref('')
+const headerImg = ref('')
+async function sendEdit() {
+  let formdata = new FormData()
+  formdata.append('title_uz', title_uz.value);
+  formdata.append('title_ru', title_ru.value);
+  formdata.append('title_en', title_en.value);
+  formdata.append('description_uz', desc_uz.value);
+  formdata.append('description_ru', desc_ru.value);
+  formdata.append('description_en', desc_en.value);
+  formdata.append('image', headerImg.value);
+  console.log(headerImg.value);
+  await submitEditHeader(formdata)
+  await getData()
+}
 </script>
 
 <style scoped></style>

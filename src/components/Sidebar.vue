@@ -35,9 +35,9 @@
               </template>
               <template v-slot:title> Safihalarni tahrirlash </template>
               <template v-slot:content>
-                <router-link to="/component/header"
+                <router-link to="/qulayliklar"
                   class="w-full text-left block rounded-md p-3 hover:bg-gray-200 dark:hover:bg-gray-700">
-                  Bosh sahifa
+                  Qulayliklar
                 </router-link>
                 <router-link to="/component/aboutUs"
                   class="w-full text-left block rounded-md p-3 hover:bg-gray-200 dark:hover:bg-gray-700">
