@@ -54,9 +54,9 @@
             <th class="py-3 px-6 text-center">Actions</th>
           </tr>
           <!-- HEADER FISRT IMAGE -->
-          <tr v-for="img in usginImg?.data" :key="img.id">
+          <tr v-for="(img, index) in usginImg?.data" :key="index.id">
             <td class="p-2">
-              {{ img.id }}
+              {{ index + 1 }}
             </td>
             <td class="p-2">
               <img class="w-48" :src="img.image" alt="image" />
@@ -143,7 +143,7 @@
                 </Modal>
 
                 <!-- DELETE -->
-                <Modal :activeModal="activeModal" @open="changeActive" @close="closeModal" @submit="sendDelete(item)"
+                <Modal :activeModal="activeModal" @open="changeActive" @close="closeModal" @submit="sendDelete(img)"
                       :isImage="true" title="O'chirish" subtitle="Siz haqiqatdan ham bu elementi o'chirishni xohlaysizmi"
                       btnTextSubmit="O'chirish" btnColorSubmit="bg-red-500">
                       <template v-slot:button>
@@ -223,11 +223,15 @@ async function sendAdd() {
   await submitAdd(adminUrl + "/use-textbook-images/create", formdata);
   await getUsingImg()
   console.log(usging_img.value);
-
-
-
 }
 
+async function sendDelete(item) {
+  let id = item.id;
+
+  // /navbar-category/delete?id=6
+  await submitDelete(adminUrl + "/use-textbook-images/delete?id=" + id);
+  await getUsingImg();
+}
 
 
 
