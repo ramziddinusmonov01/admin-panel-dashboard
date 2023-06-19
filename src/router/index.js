@@ -15,17 +15,12 @@ import videoPrice from "../views/components/videoPrice.vue";
 import DarslikdanFoydalanish from "../views/components/darslikdanFoydalanish.vue"
 import RarslinkdanFoydalanishImg from "../views/components/darslikdanFoydalanishImg.vue"
 import whyChoose from "../views/components/whyChoose.vue";
-<<<<<<< HEAD
-import works from "../views/components/works.vue";
+
 import comments from "../views/components/comments.vue";
 import register from "../views/components/register.vue";
 import footer from "../views/components/footer.vue";
-=======
-import works from "../views/components/author-main.vue";
+import authorMain from "../views/components/author-main.vue";
 import socials from "../views/components/socials.vue";
-import customers from "../views/components/customers.vue";
-import fikrlar from "../views/components/fikrlar.vue";
->>>>>>> 1edc02004d930244ff2552beb2349c6a8b60d544
 import assortimentNav from "../views/components/assortimentNav.vue";
 import authorMain from "../views/components/author-main.vue";
 import authorImages from "../views/components/author-images.vue";
@@ -131,6 +126,7 @@ const routes = [
     component: authorImages,
     meta: { title: "authorImages" + appname },
   },
+
 
 
   // layouts
