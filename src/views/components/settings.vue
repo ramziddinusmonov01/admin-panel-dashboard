@@ -570,7 +570,7 @@ const breadcrumbs = [
   },
 ];
 
-let adminUrl = "http://fazl.karimjonov.uz/api/admin"
+let adminUrl = "https://superphotoshop.uz/api/dashboard"
 let settings = ref([])
 const token = localStorage.getItem('token')
 

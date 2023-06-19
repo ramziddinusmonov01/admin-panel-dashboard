@@ -21,49 +21,45 @@ function nextModal(id) {
 }
 
 
-function submitAdd() {
-  console.log('Added');
-
-}
-const token = localStorage.getItem('token')
-async function submitEdit(formdata) {
-  const res = await fetch(adminUrl + '/settings/1', {
+async function submitAdd(url, formdata) {
+  const requestOptions = {
     method: 'POST',
-    headers: {
-      "token": token
-    },
     body: formdata,
-  })
-  const data = await res.json()
+    redirect: 'follow'
+  };
 
-  console.log(data);
+  const res = await fetch(url, requestOptions)
+  const req = await res.json()
+
+  console.log(req);
+  // close modal
+  activeModal.value = 0
 }
-async function submitEditHeader(formdata) {
-  const res = await fetch(adminUrl + '/header/content/1', {
+
+async function submitEdit(adminUrl, formdata) {
+    await fetch(adminUrl,  {
     method: 'POST',
-    headers: {
-      "token": token
-    },
     body: formdata,
+  }).then(res => res.json()).then(data => {
+    console.log(data);
   })
-  const data = await res.json()
 
-  console.log(data);
-}
-async function submitEditAmienities(formdata) {
-  const res = await fetch(adminUrl + 'amenities', {
-    method: 'POST',
-    headers: {
-      "token": token
-    },
-    body: formdata,
-  })
-  const data = await res.json()
-
-  console.log(data);
-}
-function submitDelete() {
-  console.log('deleted');
+  //close modal
+  activeModal.value = 0
 }
 
-export { activeModal, changeActive, submitEditAmienities, submitEditHeader, closeModal, nextModal, submitAdd, submitEdit, submitDelete }
+
+async function submitDelete(url) {
+  const requestOptions = {
+    method: 'DELETE',
+    redirect: 'follow'
+  };
+
+  const res = await fetch(url, requestOptions)
+  const req = await res.json()
+
+  // close modal
+  activeModal.value = 0
+}
+
+export { activeModal, changeActive, closeModal, nextModal, submitAdd, submitEdit, submitDelete }

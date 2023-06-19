@@ -35,45 +35,49 @@
               </template>
               <template v-slot:title> Safihalarni tahrirlash </template>
               <template v-slot:content>
-                <router-link to="/qulayliklar"
+                <router-link to="/component/navigation"
                   class="w-full text-left block rounded-md p-3 hover:bg-gray-200 dark:hover:bg-gray-700">
-                  Qulayliklar
+                  Navigatsiya sahifasini tahrirlash
                 </router-link>
                 <router-link to="/component/aboutUs"
                   class="w-full text-left block rounded-md p-3 hover:bg-gray-200 dark:hover:bg-gray-700">
-                  Biz haqimizda
+                  Bosh sahifa tahrirlash
                 </router-link>
                 <router-link to="/component/assortiment"
                   class="w-full text-left block rounded-md p-3 hover:bg-gray-200 dark:hover:bg-gray-700">
-                  Assortiment
+                  Photoshop mazulari sahifasini tahrirlash
                 </router-link>
-                <router-link to="/component/buyurtmaBerish"
+                <router-link to="/component/Darslikdanfoydalanish"
                   class="w-full text-left block rounded-md p-3 hover:bg-gray-200 dark:hover:bg-gray-700">
-                  Buyurtma berish
+                  Darslikdan foydalanish sahifasini tahrirlash
+                </router-link>
+                <router-link to="/component/Darslikdanfoydalanishimg"
+                  class="w-full text-left block rounded-md p-3 hover:bg-gray-200 dark:hover:bg-gray-700">
+                  Darslikdan foydalanish sahifasini tahrirlash rasmi
                 </router-link>
                 <router-link to="/component/whyChoose"
                   class="w-full text-left block rounded-md p-3 hover:bg-gray-200 dark:hover:bg-gray-700">
-                  Nima uchun bizni tanlashadi
+                  Bonuslar sahifasini tahrirlash
                 </router-link>
                 <router-link to="/component/works"
                   class="w-full text-left block rounded-md p-3 hover:bg-gray-200 dark:hover:bg-gray-700">
-                  Biz qilgan ishlar
+                  Muallif haqida 
                 </router-link>
                 <router-link to="/component/comments"
                   class="w-full text-left block rounded-md p-3 hover:bg-gray-200 dark:hover:bg-gray-700">
-                  Mijozlarimiz fikri
+                  Ijtioiy tarmoqlar sahifasini tahrirlash
                 </router-link>
                 <router-link to="/component/assortimentNav"
                   class="w-full text-left block rounded-md p-3 hover:bg-gray-200 dark:hover:bg-gray-700">
-                  Assortiment category
+                  O`quvchilar fikri sahifasini tahrirlash 
                 </router-link>
                 <router-link to="/component/button"
                   class="w-full text-left block rounded-md p-3 hover:bg-gray-200 dark:hover:bg-gray-700">
-                  Bepul maslahat olish
+                  Video darslar narxlari sahifasini tahrirlash
                 </router-link>
                 <router-link to="/component/customers"
                   class="w-full text-left block rounded-md p-3 hover:bg-gray-200 dark:hover:bg-gray-700">
-                  Mijozlarimiz ichida
+                  Ro`yxatdan o`tish sahifasini tahrirlash
                 </router-link>
                 <router-link to="/component/fikrlar"
                   class="w-full text-left block rounded-md p-3 hover:bg-gray-200 dark:hover:bg-gray-700">

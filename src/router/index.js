@@ -8,11 +8,12 @@ import Dashboard from "../views/Dashboard.vue";
 import Login from "../views/layouts/auth/Login.vue";
 import Register from "../views/layouts/auth/Register.vue";
 import Settings from "../views/components/settings.vue";
-import qulayliklar from "../views/components/qulayliklar.vue";
+import Navigation from "../views/components/Navigation.vue"
 import aboutUs from "../views/components/aboutUs.vue";
 import Assortiment from "../views/components/assortiment.vue";
 import Button from "../views/components/button.vue";
-import BuyurtmaBerish from "../views/components/buyurtmaBerish.vue"; 0
+import DarslikdanFoydalanish from "../views/components/darslikdanFoydalanish.vue"
+import RarslinkdanFoydalanishImg from "../views/components/darslikdanFoydalanishImg.vue"
 import whyChoose from "../views/components/whyChoose.vue";
 import works from "../views/components/works.vue";
 import comments from "../views/components/comments.vue";
@@ -68,10 +69,10 @@ const routes = [
     meta: { title: "Settings" + appname },
   },
   {
-    path: "/qulayliklar",
-    name: "qulayliklar",
-    component: qulayliklar,
-    meta: { title: "qulayliklar" + appname },
+    path: "/component/navigation",
+    name: "navigation",
+    component: Navigation,
+    meta: { title: "navigation" + appname },
   },
   {
     path: "/component/assortiment",
@@ -86,10 +87,16 @@ const routes = [
     meta: { title: "Button" + appname },
   },
   {
-    path: "/component/buyurtmaBerish",
-    name: "BuyurtmaBerish",
-    component: BuyurtmaBerish,
-    meta: { title: "BuyurtmaBerish" + appname },
+    path: "/component/darslikdanfoydalanish",
+    name: "Darslikdanfoydalanish",
+    component: DarslikdanFoydalanish,
+    meta: { title: "Darslikdanfoydalanish" + appname },
+  },
+  {
+    path:"/component/darslikdanfoydalanishimg",
+    name:"Darslikdanfoydalanishimg",
+    component:RarslinkdanFoydalanishImg,
+    meta: {title:"Darslikdanfoydalanishimg" + appname }
   },
   {
     path: "/component/whyChoose",
