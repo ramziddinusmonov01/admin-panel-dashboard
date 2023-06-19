@@ -71,15 +71,15 @@
                   class="w-full text-left block rounded-md p-3 hover:bg-gray-200 dark:hover:bg-gray-700">
                   O`quvchilar fikri sahifasini tahrirlash 
                 </router-link>
-                <router-link to="/component/button"
+                <router-link to="/component/videoPrice"
                   class="w-full text-left block rounded-md p-3 hover:bg-gray-200 dark:hover:bg-gray-700">
                   Video darslar narxlari sahifasini tahrirlash
                 </router-link>
-                <router-link to="/component/customers"
+                <router-link to="/component/register"
                   class="w-full text-left block rounded-md p-3 hover:bg-gray-200 dark:hover:bg-gray-700">
                   Ro`yxatdan o`tish sahifasini tahrirlash
                 </router-link>
-                <router-link to="/component/fikrlar"
+                <router-link to="/component/footer"
                   class="w-full text-left block rounded-md p-3 hover:bg-gray-200 dark:hover:bg-gray-700">
                   Footer qismi
                 </router-link>

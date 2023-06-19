@@ -5,6 +5,7 @@ import VueApexCharts from "vue3-apexcharts";
 import PerfectScrollbar from "vue3-perfect-scrollbar";
 import "vue3-perfect-scrollbar/dist/vue3-perfect-scrollbar.css";
 import { createPinia } from "pinia";
+import Vuelidate from 'vuelidate'
 // import "flowbite";
 import "./assets/tailwind.css";
 import "./assets/animate.css";
@@ -14,6 +15,7 @@ import vClickOutside from "click-outside-vue3";
 const app = createApp(App);
 app.use(router);
 app.use(createPinia());
+app.use(Vuelidate)
 app.use(VueApexCharts);
 app.use(PerfectScrollbar);
 app.use(vClickOutside);

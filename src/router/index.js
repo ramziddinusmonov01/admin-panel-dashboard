@@ -11,14 +11,14 @@ import Settings from "../views/components/settings.vue";
 import Navigation from "../views/components/Navigation.vue"
 import aboutUs from "../views/components/aboutUs.vue";
 import Assortiment from "../views/components/assortiment.vue";
-import Button from "../views/components/button.vue";
+import videoPrice from "../views/components/videoPrice.vue";
 import DarslikdanFoydalanish from "../views/components/darslikdanFoydalanish.vue"
 import RarslinkdanFoydalanishImg from "../views/components/darslikdanFoydalanishImg.vue"
 import whyChoose from "../views/components/whyChoose.vue";
 import works from "../views/components/works.vue";
 import comments from "../views/components/comments.vue";
-import customers from "../views/components/customers.vue";
-import fikrlar from "../views/components/fikrlar.vue";
+import register from "../views/components/register.vue";
+import footer from "../views/components/footer.vue";
 import assortimentNav from "../views/components/assortimentNav.vue";
 // layouts
 // import Blank from "../views/layouts/Blank.vue";
@@ -45,10 +45,10 @@ const routes = [
     meta: { title: "assortimentNav" + appname },
   },
   {
-    path: "/component/fikrlar",
-    name: "fikrlar",
-    component: fikrlar,
-    meta: { title: "fikrlar" + appname },
+    path: "/component/footer",
+    name: "footer",
+    component: footer,
+    meta: { title: "footer" + appname },
   },
   {
     path: "/component/aboutUs",
@@ -57,10 +57,10 @@ const routes = [
     meta: { title: "aboutUs" + appname },
   },
   {
-    path: "/component/customers",
-    name: "customers",
-    component: customers,
-    meta: { title: "customers" + appname },
+    path: "/component/register",
+    name: "register",
+    component: register,
+    meta: { title: "register" + appname },
   },
   {
     path: "/component/settings",
@@ -81,10 +81,10 @@ const routes = [
     meta: { title: "Assortiment" + appname },
   },
   {
-    path: "/component/button",
-    name: "Button",
-    component: Button,
-    meta: { title: "Button" + appname },
+    path: "/component/videoPrice",
+    name: "videoPrice",
+    component: videoPrice,
+    meta: { title: "videoPrice" + appname },
   },
   {
     path: "/component/darslikdanfoydalanish",
