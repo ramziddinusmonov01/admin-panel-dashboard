@@ -59,17 +59,13 @@
                   class="w-full text-left block rounded-md p-3 hover:bg-gray-200 dark:hover:bg-gray-700">
                   Bonuslar sahifasini tahrirlash
                 </router-link>
-                <router-link to="/component/works"
-                  class="w-full text-left block rounded-md p-3 hover:bg-gray-200 dark:hover:bg-gray-700">
-                  Muallif haqida 
-                </router-link>
-                <router-link to="/component/comments"
+                <router-link to="/component/socials"
                   class="w-full text-left block rounded-md p-3 hover:bg-gray-200 dark:hover:bg-gray-700">
                   Ijtioiy tarmoqlar sahifasini tahrirlash
                 </router-link>
                 <router-link to="/component/assortimentNav"
                   class="w-full text-left block rounded-md p-3 hover:bg-gray-200 dark:hover:bg-gray-700">
-                  O`quvchilar fikri sahifasini tahrirlash 
+                  O`quvchilar fikri sahifasini tahrirlash
                 </router-link>
                 <router-link to="/component/videoPrice"
                   class="w-full text-left block rounded-md p-3 hover:bg-gray-200 dark:hover:bg-gray-700">
@@ -82,6 +78,25 @@
                 <router-link to="/component/footer"
                   class="w-full text-left block rounded-md p-3 hover:bg-gray-200 dark:hover:bg-gray-700">
                   Footer qismi
+                </router-link>
+              </template>
+            </menu-accordion>
+          </div>
+          <!-- main page menues -->
+          <div class="item mt-3">
+            <menu-accordion>
+              <template v-slot:icon>
+                <Icon icon="gg:components" />
+              </template>
+              <template v-slot:title> Muallif haqida </template>
+              <template v-slot:content>
+                <router-link to="/author/about"
+                  class="w-full text-left block rounded-md p-3 hover:bg-gray-200 dark:hover:bg-gray-700">
+                  Asosiy qism
+                </router-link>
+                <router-link to="/author/images"
+                  class="w-full text-left block rounded-md p-3 hover:bg-gray-200 dark:hover:bg-gray-700">
+                  Rasmlar
                 </router-link>
               </template>
             </menu-accordion>

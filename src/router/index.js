@@ -15,11 +15,20 @@ import videoPrice from "../views/components/videoPrice.vue";
 import DarslikdanFoydalanish from "../views/components/darslikdanFoydalanish.vue"
 import RarslinkdanFoydalanishImg from "../views/components/darslikdanFoydalanishImg.vue"
 import whyChoose from "../views/components/whyChoose.vue";
+<<<<<<< HEAD
 import works from "../views/components/works.vue";
 import comments from "../views/components/comments.vue";
 import register from "../views/components/register.vue";
 import footer from "../views/components/footer.vue";
+=======
+import works from "../views/components/author-main.vue";
+import socials from "../views/components/socials.vue";
+import customers from "../views/components/customers.vue";
+import fikrlar from "../views/components/fikrlar.vue";
+>>>>>>> 1edc02004d930244ff2552beb2349c6a8b60d544
 import assortimentNav from "../views/components/assortimentNav.vue";
+import authorMain from "../views/components/author-main.vue";
+import authorImages from "../views/components/author-images.vue";
 // layouts
 // import Blank from "../views/layouts/Blank.vue";
 
@@ -105,16 +114,22 @@ const routes = [
     meta: { title: "whyChoose" + appname },
   },
   {
-    path: "/component/works",
-    name: "works",
-    component: works,
-    meta: { title: "works" + appname },
+    path: "/component/socials",
+    name: "socials",
+    component: socials,
+    meta: { title: "socials" + appname },
   },
   {
-    path: "/component/comments",
-    name: "comments",
-    component: comments,
-    meta: { title: "comments" + appname },
+    path: "/author/about",
+    name: "authorMain",
+    component: authorMain,
+    meta: { title: "authorMain" + appname },
+  },
+  {
+    path: "/author/images",
+    name: "authorImages",
+    component: authorImages,
+    meta: { title: "authorImages" + appname },
   },
 
 
