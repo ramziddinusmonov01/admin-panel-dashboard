@@ -4,52 +4,32 @@
     <!-- breadcump -->
     <breadcump :items="breadcrumbs"></breadcump>
 
-
     <!-- title -->
-    <div class="w-full py-3 mt-4 flex items-end justify-between">
+    <div class="w-full py-4 mt-4 flex items-end justify-between">
       <h1 class="text-2xl text-gray-900 font-medium dark:text-gray-200">
-        O'quvchilar fikrini tahrirlash
+        E'lonlar
       </h1>
       <Modal :activeModal="activeModal" @open="changeActive" @close="closeModal" @submit="sendAdd" :isImage=true
-        title="Yangi element qo'shish" btnTextSubmit="Saqlash">
+        title="Yangi menyu qo'shish" subtitle="Bosh sahifaga yangi menyu qo'shish" btnTextSubmit="Saqlash">
         <template v-slot:body>
           <div class="space-y-5 pb-5">
-            <div class="space-y-3">
-              <p>Element nomi</p>
-              <input type="text" placeholder="" v-model="state.add_title"
-                class="p-2 border dark:border-gray-600 dark:bg-gray-700 w-full rounded outline-none" />
-              <span class="text-red-500 mt-3 block rounded-full text-xs" v-for="error in v$.add_title.$errors"
-                :key="error.$uid"> Element nomini kiritishingiz
-                shart
-              </span>
-            </div>
-            <div>
-              <label for="default-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sahifa
-                tavsifini
-                kiriting</label>
-              <textarea id="message" rows="4" v-model="state.add_desc"
-                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="Sahifa tavsifini shu yerga yozing"></textarea>
-              <span class="text-red-500 mt-3 block rounded-full text-xs" v-for="error in v$.add_desc.$errors"
-                :key="error.$uid"> Maydonni to`ldirish sahrt
-                shart
-              </span>
-            </div>
             <div class="space-y-3">
               <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Rasm
                 yuklash</label>
               <input @input="addImage"
                 class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                aria-describedby="file_input_help" id="file_input" type="file">
+                aria-describedby="file_input_help" id="file_input" type="file">   
+              <!-- <span class="text-red-500 mt-3 block rounded-full text-xs" v-for="error in v$.add_image.$errors"
+                :key="error.$uid"> Rasm kiritishingiz
+                shart
+              </span> -->
               <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">SVG, PNG, JPG or
                 GIF (MAX. 800x400px).</p>
-              <span class="text-red-500 mt-3 block rounded-full text-xs" v-for="error in v$.add_image.$errors"
-                :key="error.$uid">Rasm yuklash shart</span>
             </div>
             <div class="space-y-3">
               <p>Holati</p>
               <label class="relative inline-flex items-center mr-5 cursor-pointer">
-                <input v-model="add_status" type="checkbox" value="" class="sr-only peer" checked>
+                <input type="checkbox" value="" class="sr-only peer" checked v-model="add_status">
                 <div
                   class="w-11 h-6 bg-gray-200 rounded-full dark:peer-focus:ring-indigo-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-indigo-600">
                 </div>
@@ -67,7 +47,6 @@
       </Modal>
     </div>
 
-
     <!-- main -->
     <div class="overflow-x-auto">
       <div class="w-full">
@@ -75,8 +54,7 @@
           <table class="w-full table-auto">
             <thead>
               <tr class="bg-gray-200 dark:bg-gray-700 dark:text-gray-400 text-gray-600 uppercase text-sm leading-normal">
-                <th class="py-3 px-6 text-left">ID</th>
-                <th class="py-3 px-6 text-left">Nomi</th>
+                <th class="py-3 px-6 text-left">#</th>
                 <th class="py-3 px-6 text-left">Rasm</th>
                 <th class="py-3 px-6 text-center">Holati</th>
                 <th class="py-3 px-6 text-center">Actions</th>
@@ -85,17 +63,12 @@
             <tbody class="text-gray-600 text-sm font-light">
               <tr v-for="(item, index) in items?.data" :key="item.id"
                 class="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-500">
-                <td class="py-3 px-6 text-left whitespace-nowrap">
-                  <span class="font-medium"> {{ index }} </span>
+                <td class="w-20 py-3 px-6 text-left whitespace-nowrap">
+                  <span class="font-medium"> {{ index + 1 }} </span>
                 </td>
                 <td class="py-3 px-6 text-left">
-                  <div class="flex items-center">
-                    <span class="min-w-max text-base font-medium"> {{ item.title }} </span>
-                  </div>
-                </td>
-                <td class="py-3 px-6 text-left">
-                  <div class="flex items-center w-24">
-                    <img class="w-full h-full" :src="item.image" alt="">
+                  <div class="flex items-center w-24 h-20">
+                    <img class="w-full h-full object-cover" :src="item.image" alt="">
                   </div>
                 </td>
                 <td class="py-3 px-6 text-center">
@@ -110,13 +83,9 @@
                       @submit="nextModal" :isImage=true title="Ko'rish" btnTextSubmit="Tahrirlash">
                       <template v-slot:body>
                         <div class="grid grid-cols-4 gap-4">
-                          <span class="font-medium text-lg">Nomi</span>
-                          <span class="font-normal text-base col-span-3"> {{ item.title }} </span>
-                          <span class="font-medium text-lg">Tavsifi</span>
-                          <span class="font-normal text-base col-span-3"> {{ item.content }} </span>
                           <span class="font-medium text-lg">Rasm</span>
                           <span class="block font-normal text-base col-span-3">
-                            <img class="w-44" :src="item.image" alt="">
+                            <img class="w-36" :src="item.image" alt="">
                           </span>
                           <span class="font-medium text-lg ">Holati</span>
                           <div class="col-span-3">
@@ -128,7 +97,7 @@
                       </template>
                       <template v-slot:button>
                         <div class="w-5 mr-3 transform hover:text-blue-500 hover:scale-110">
-                          <svg class="" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                          <svg class="w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                               d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -144,21 +113,6 @@
                       btnTextSubmit="Saqlash">
                       <template v-slot:body>
                         <div class="space-y-5 pb-5">
-                          <div class="space-y-3">
-                            <p>Card nomi</p>
-                            <input type="text" placeholder="" @input="edit_title = $event.target.value"
-                              @keydown.enter="sendEdit(item)" :value="edit_title"
-                              class="p-2 border dark:border-gray-600 dark:bg-gray-700 w-full rounded outline-none" />
-                          </div>
-                          <div>
-                            <label for="default-input"
-                              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sahifa tavsifini
-                              kiriting</label>
-                            <textarea id="message" rows="4" @input="edit_desc = $event.target.value"
-                              @keydown.enter="sendEdit(item)" :value="edit_desc"
-                              class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                              placeholder="Sahifa tavsifini shu yerga yozing"></textarea>
-                          </div>
                           <div class="space-y-3">
                             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                               for="file_input">Rasm yuklash</label>
@@ -177,7 +131,6 @@
                                 class="w-11 h-6 bg-gray-200 rounded-full dark:peer-focus:ring-indigo-800 dark:bg-gray-700  after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600"
                                 :class="{ 'peer-checked:bg-indigo-600 peer-checked:after:border-white peer-checked:after:translate-x-full': edit_status }">
                               </div>
-
                               <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300 select-none"> {{
                                 edit_status ? "Faol" : "Nofaol" }} </span>
                             </label>
@@ -211,34 +164,28 @@
               </tr>
             </tbody>
           </table>
-          <div v-if="!items?.data" class="flex justify-center py-6">
-            <div class="spinner"></div>
-          </div>
         </div>
       </div>
     </div>
-
-
   </div>
 </template>
 
 <script setup>
 import { useVuelidate } from '@vuelidate/core'
-import { required, } from '@vuelidate/validators'
+import { required, email } from '@vuelidate/validators'
 import { ref, onMounted, reactive } from 'vue'
 // components
 import Modal from "@/components/modal.vue";
 import Breadcump from "@/components/Breadcump.vue";
 import { activeModal, changeActive, closeModal, nextModal, submitAdd, submitEdit, submitDelete } from '@/helper/active-modal'
 // admin url
-const adminUrl = 'https://superphotoshop.uz/api/dashboard'
-
+const adminUrl = "https://superphotoshop.uz/api/dashboard";
 
 // main items
 let items = ref()
 
 async function getData() {
-  const res = await fetch(adminUrl + '/pupil-comments')
+  const res = await fetch(adminUrl + '/author-images')
   const req = await res.json()
   items.value = req
 }
@@ -250,56 +197,39 @@ onMounted(() => {
 // Actions main
 
 // add variables
-
+let add_image = ref('')
 let add_status = ref(true)
-
-
-const state = reactive({
-  add_title: '',
-  add_desc: '',
-  add_image: '',
-})
-
-
-const rules = {
-  add_title: { required },
-  add_desc: { required },
-  add_image: { required },
-}
-
-const v$ = useVuelidate(rules, state)
-
-
-
-
+// const state = reactive({
+//   add_image: '',
+// })
+// const rules = {
+//   add_image: { required },
+// }
+// const v$ = useVuelidate(state, rules)
 // edit variables
-let edit_title = ref('')
-let edit_desc = ref('')
 let edit_image = ref('')
 let edit_status = ref(true)
 
 
 function addImage(event) {
-  state.add_image = event.target.files[0]
+  add_image.value = event.target.files[0]
 }
 
 async function sendAdd() {
-  const result = await v$.value.$validate()
+  // const result = await v$.value.$validate()
+
   let formdata = new FormData()
-  formdata.append('name', state.add_title)
-  formdata.append('description', state.add_desc)
-  formdata.append('img', state.add_image)
+  formdata.append('img', add_image.value)
   formdata.append('status', add_status.value ? 1 : 0)
 
-  if (result) {
-    await submitEdit(adminUrl + '/pupil-comments/create', formdata)
+  // if (result) {
+    await submitEdit(adminUrl + '/author-images/create', formdata)
     await getData()
-    state.add_title = ''
-    state.edit_desc = ''
-    state.add_image = ''
-    add_status.value = true
-  }
 
+    add_image.value = '13'
+    console.log(add_image.value);
+    add_status.value = true
+  // }
 }
 
 
@@ -309,8 +239,6 @@ function editImage(event) {
 }
 
 function openEdit(item) {
-  edit_title.value = item.title
-  edit_desc.value = item.content
   edit_image.value = item.image
   edit_status.value = item.status === 1 ? true : false
 
@@ -319,16 +247,12 @@ function openEdit(item) {
 async function sendEdit(item) {
   let id = item.id
   let formdata = new FormData()
-  formdata.append('name', edit_title.value)
-  formdata.append('description', edit_desc.value)
   formdata.append('img', edit_image.value)
   formdata.append('status', edit_status.value ? 1 : 0)
 
-  await submitEdit(adminUrl + '/pupil-comments/update?id=' + id, formdata)
+  await submitEdit(adminUrl + '/author-images/update?id=' + id, formdata)
   await getData()
 
-  edit_title.value = ''
-  edit_desc.value = ''
   edit_image.value = ''
   edit_status.value = true
 }
@@ -336,18 +260,21 @@ async function sendEdit(item) {
 async function sendDelete(item) {
   let id = item.id
 
-  await submitDelete(adminUrl + '/pupil-comments/delete?id=' + id)
+  await submitEdit(adminUrl + '/author-images/delete?id=' + id)
   await getData()
 }
 
+
+
 const breadcrumbs = [
   {
-    label: "O'quvchilar fikri",
+    label: "Bosh sahifa",
     url: "/"
   },
-
+  {
+    label: "E'lonlar",
+  },
 ]
-
 </script>
 
 <style lang="scss" scoped></style>

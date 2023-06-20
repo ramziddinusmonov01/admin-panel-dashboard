@@ -1,4 +1,4 @@
-<!-- <template>
+<template>
   <div class="p-4">
     <div
       class="bg-white dark:bg-gray-800 w-full p-6 font-lexend border dark:border-gray-700 rounded-md mt-5"
@@ -17,4 +17,4 @@
       </p>
     </footer>
   </div>
-</template> -->
+</template>
