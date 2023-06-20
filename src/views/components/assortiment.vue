@@ -281,8 +281,6 @@ async function sendAdd() {
   await submitAdd(adminUrl + "/photoshop-themes/create", formdata);
   await getThems();
 
-  title.value = ""
-  desc.value = ""
 
 }
 

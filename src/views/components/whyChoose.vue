@@ -7,58 +7,9 @@
     <div class="mt-5 w-full">
       <div class="flex justify-between">
         <h1 class="text-2xl text-gray-900 font-medium dark:text-gray-200">
-          mebel all
+          Bonuslar sahifasini tahrirlash
         </h1>
-        <Modal :activeModal="activeModal" @open="changeActive" @close="closeModal" @submit="submitAdd" :isImage="true"
-          title="Yangi element qo'shish" subtitle="" btnTextSubmit="Saqlash">
-          <template v-slot:body>
-            <div class="space-y-5 pb-5">
-              <div class="space-y-3">
-                <p>title kiriting uz</p>
-                <input type="text" placeholder=""
-                  class="p-2 border dark:border-gray-600 dark:bg-gray-700 w-full rounded outline-none" />
-              </div>
-              <div class="space-y-3">
-                <p>title kiriting ru</p>
-                <input type="text" placeholder=""
-                  class="p-2 border dark:border-gray-600 dark:bg-gray-700 w-full rounded outline-none" />
-              </div>
-              <div class="space-y-3">
-                <p>title kiriting en</p>
-                <input type="text" placeholder=""
-                  class="p-2 border dark:border-gray-600 dark:bg-gray-700 w-full rounded outline-none" />
-              </div>
-              <div class="space-y-3">
-                <p>categoriyani kiriting </p>
-                <input type="text" placeholder=""
-                  class="p-2 border dark:border-gray-600 dark:bg-gray-700 w-full rounded outline-none" />
-              </div>
-              <div class="space-y-3">
-                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">rasm
-                  yuklang</label>
-                <input
-                  class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                  aria-describedby="file_input_help" id="file_input" type="file" />
-                <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">
-                  SVG, PNG, JPG or GIF (MAX. 800x400px).
-                </p>
-              </div>
-              <div class="space-y-3">
-                <p>Holati</p>
-                <label class="relative inline-flex items-center mr-5 cursor-pointer">
-                  <input type="checkbox" value="" class="sr-only peer" checked />
-                  <div
-                    class="w-11 h-6 bg-gray-200 rounded-full dark:peer-focus:ring-indigo-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-indigo-600">
-                  </div>
-                  <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300 select-none">Faol</span>
-                </label>
-              </div>
-            </div>
-          </template>
-          <template v-slot:button>
-            <span class="bg-green-500 pb-1 px-4 rounded-md text-4xl text-green-50">+</span>
-          </template>
-        </Modal>
+        
       </div>
     </div>
 
@@ -69,17 +20,27 @@
           <table class="min-w-max w-full table-auto">
             <thead>
               <tr class="bg-gray-200 dark:bg-gray-700 dark:text-gray-400 text-gray-600 uppercase text-sm leading-normal">
+                <th class="py-3 px-6 text-left">nomi</th>
                 <th class="py-3 px-6 text-left">komponentalar</th>
                 <th class="py-3 px-6 text-center">Holati</th>
                 <th class="py-3 px-6 text-center">Actions</th>
               </tr>
             </thead>
             <tbody class="text-gray-600 text-sm font-light">
-              <!-- title  tahrirlash/-->
-              <tr class="hover:bg-gray-100 dark:hover:bg-gray-500">
+              <!-- main img  tahrirlash/-->
+              <tr class="hover:bg-gray-100 dark:hover:bg-gray-500" v-for="item in bonus?.data" :key="item.id">
+                <td class="py-3 px-6 text-left  w-20">
+                  <div class="flex items-center">
+                    <span class="text-base font-medium">
+                      Rasm
+                    </span>
+                  </div>
+                </td>
                 <td class="py-3 px-6 text-left">
                   <div class="flex items-center">
-                    <span class="text-base font-medium">Title</span>
+                    <span class="text-base font-medium">
+                      <img class="w-48" :src="item.image" :alt="item.title">
+                    </span>
                   </div>
                 </td>
                 <td class="py-3 px-6 text-center">
@@ -95,16 +56,10 @@
                       <template v-slot:body>
                         <div class="flex justify-start gap-12">
                           <div class="flex flex-col items-start gap-6">
-                            <span class="font-medium text-lg flex-1">Title uz</span>
-                            <span class="font-medium text-lg flex-1">Title ru</span>
-                            <span class="font-medium text-lg flex-1">Title en</span>
-                            <span class="font-medium text-lg flex-1">Holati</span>
-                          </div>
-                          <div class="flex flex-col items-start gap-6">
-                            <span class="font-normal text-base flex-1">Andijon shaxar, boychechak 4 uz</span>
-                            <span class="font-normal text-base flex-1">Andijon shaxar, boychechak ru</span>
-                            <span class="font-normal text-base flex-1">Andijon shaxar, boychechak en</span>
-                            <span class="bg-green-200 text-green-700 py-1 px-4 rounded-full text-xs">Faol</span>
+                            <span class="font-medium text-lg flex-1">
+                              <img :src="item.image" alt="img">
+                            </span>
+
                           </div>
                         </div>
                       </template>
@@ -121,24 +76,17 @@
                       </template>
                     </Modal>
                     <!-- edit -->
-                    <Modal :activeModal="activeModal" @open="changeActive" @close="closeModal" @submit="submitEdit()"
+                    <Modal :activeModal="activeModal" @open="changeActive" @close="closeModal" @submit="closeModal"
                       :isImage="true" title="Tahrirlash" subtitle="Joylashuvni tahrirlash" btnTextSubmit="Saqlash">
                       <template v-slot:body>
                         <div class="space-y-5 pb-5">
                           <div class="space-y-3">
                             <p>Yangi Title kiriting uz</p>
-                            <input type="text" placeholder=""
-                              class="p-2 border dark:border-gray-600 dark:bg-gray-700 w-full rounded outline-none" />
-                          </div>
-                          <div class="space-y-3">
-                            <p>Yangi Title kiriting ru</p>
-                            <input type="text" placeholder=""
-                              class="p-2 border dark:border-gray-600 dark:bg-gray-700 w-full rounded outline-none" />
-                          </div>
-                          <div class="space-y-3">
-                            <p>Yangi Title kiriting en</p>
-                            <input type="text" placeholder=""
-                              class="p-2 border dark:border-gray-600 dark:bg-gray-700 w-full rounded outline-none" />
+                            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload
+                             file</label>
+                            <input @change="editImg($event)"
+                              class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                              id="file_input" type="file">
                           </div>
                           <div class="space-y-3">
                             <p>Holati</p>
@@ -162,28 +110,23 @@
                         </div>
                       </template>
                     </Modal>
-                    <!-- delete -->
-                    <Modal :activeModal="activeModal" @open="changeActive" @close="closeModal" @submit="submitDelete"
-                      :isImage="true" title="O'chirish" subtitle="Siz haqiqatdan ham bu elementi o'chirishni xohlaysizmi"
-                      btnTextSubmit="O'chirish" btnColorSubmit="bg-red-500">
-                      <template v-slot:button>
-                        <div class="w-4 mr-2 transform hover:text-red-500 hover:scale-110">
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                              d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                          </svg>
-                        </div>
-                      </template>
-                    </Modal>
+
                   </div>
                 </td>
               </tr>
 
-              <!--  rasm tahrirlash/-->
-              <tr class="hover:bg-gray-100 dark:hover:bg-gray-500">
+              <!-- main title tahrirlash/-->
+              <tr class="hover:bg-gray-100 dark:hover:bg-gray-500" v-for="fisrtTitle in bonus?.data" :key="fisrtTitle.id">
+                <td class="py-3 px-6 text-left  w-28">
+                  <div class="flex items-center">
+                    <span class="text-base font-medium font-bold">
+                      Asosiy sarlavha
+                    </span>
+                  </div>
+                </td>
                 <td class="py-3 px-6 text-left">
                   <div class="flex items-center">
-                    <span class="text-base font-medium">photo footer</span>
+                    <span class="text-base font-medium">{{ fisrtTitle.main_title }}</span>
                   </div>
                 </td>
                 <td class="py-3 px-6 text-center">
@@ -199,12 +142,7 @@
                       <template v-slot:body>
                         <div class="flex justify-start gap-12">
                           <div class="flex flex-col items-start gap-6">
-                            <span class="font-medium text-lg flex-1">rasm</span>
-                            <span class="font-medium text-lg flex-1">Holati</span>
-                          </div>
-                          <div class="flex flex-col items-start gap-6">
-                            <img src="../../assets/img/star.png" alt="img">
-                            <span class="bg-green-200 text-green-700 py-1 px-4 rounded-full text-xs">Faol</span>
+                            <span class="font-medium text-lg flex-1">{{ fisrtTitle.main_title }}</span>
                           </div>
                         </div>
                       </template>
@@ -221,19 +159,14 @@
                       </template>
                     </Modal>
                     <!-- edit -->
-                    <Modal :activeModal="activeModal" @open="changeActive" @close="closeModal" @submit="submitEdit"
+                    <Modal :activeModal="activeModal" @open="changeActive" @close="closeModal" @submit="closeModal"
                       :isImage="true" title="Tahrirlash" subtitle="Joylashuvni tahrirlash" btnTextSubmit="Saqlash">
                       <template v-slot:body>
                         <div class="space-y-5 pb-5">
                           <div class="space-y-3">
-                            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                              for="file_input">rasm yuklang</label>
-                            <input
-                              class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                              aria-describedby="file_input_help" id="file_input" type="file" />
-                            <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">
-                              SVG, PNG, JPG or GIF (MAX. 800x400px).
-                            </p>
+                            <p>Yangi Title kiriting uz</p>
+                            <input type="text" placeholder="" @input="mainTitle = $event.target.value"
+                              class="p-2 border dark:border-gray-600 dark:bg-gray-700 w-full rounded outline-none" />
                           </div>
                           <div class="space-y-3">
                             <p>Holati</p>
@@ -257,22 +190,326 @@
                         </div>
                       </template>
                     </Modal>
-                    <!-- delete -->
-                    <Modal :activeModal="activeModal" @open="changeActive" @close="closeModal" @submit="submitDelete"
-                      :isImage="true" title="O'chirish" subtitle="Siz haqiqatdan ham bu elementi o'chirishni xohlaysizmi"
-                      btnTextSubmit="O'chirish" btnColorSubmit="bg-red-500">
+
+                  </div>
+                </td>
+              </tr>
+
+              <!-- title  tahrirlash/-->
+              <tr class="hover:bg-gray-100 dark:hover:bg-gray-500" v-for="heading in bonus?.data" :key="heading.id">
+                <td class="py-3 px-6 text-left">
+                  <div class="flex items-center">
+                    <span class="text-base font-medium flex w-96">serlavha</span>
+                  </div>
+                </td>
+                <td class="py-3 px-6 text-left">
+                  <div class="flex items-center">
+                    <span class="text-base font-medium flex w-96">{{ heading.title }}</span>
+                  </div>
+                </td>
+                <td class="py-3 px-6 text-center">
+                  <button class="bg-green-200 text-green-700 py-1 px-4 rounded-full text-xs">
+                    Faol
+                  </button>
+                </td>
+                <td class="py-3 px-6 text-center">
+                  <div class="flex items-center justify-center">
+                    <!-- see -->
+                    <Modal :activeModal="activeModal" @open="changeActive" @close="closeModal" @submit="nextModal"
+                      :isImage="true" title="Ko'rish" btnTextSubmit="Tahrirlash">
+                      <template v-slot:body>
+                        <div class="flex justify-start gap-12">
+                          <div class="flex flex-col items-start gap-6">
+                            <span class="font-medium text-lg flex-1">{{ heading.title }}</span>
+                          </div>
+
+                        </div>
+                      </template>
                       <template v-slot:button>
-                        <div class="w-4 mr-2 transform hover:text-red-500 hover:scale-110">
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <div class="w-4 mr-2 transform hover:text-blue-500 hover:scale-110">
+                          <svg class="w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                              d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                              d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                           </svg>
                         </div>
                       </template>
                     </Modal>
+                    <!-- edit -->
+                    <Modal :activeModal="activeModal" @open="changeActive" @close="closeModal" @submit="closeModal"
+                      :isImage="true" title="Tahrirlash" subtitle="Joylashuvni tahrirlash" btnTextSubmit="Saqlash">
+                      <template v-slot:body>
+                        <div class="space-y-5 pb-5">
+                          <div class="space-y-3">
+                            <p>Yangi Title kiriting </p>
+                            <input type="text" placeholder="" @input="second_title = $event.target.value"
+                              class="p-2 border dark:border-gray-600 dark:bg-gray-700 w-full rounded outline-none" />
+                          </div>
+                          <div class="space-y-3">
+                            <p>Holati</p>
+                            <label class="relative inline-flex items-center mr-5 cursor-pointer">
+                              <input type="checkbox" value="" class="sr-only peer" checked />
+                              <div
+                                class="w-11 h-6 bg-gray-200 rounded-full dark:peer-focus:ring-indigo-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-indigo-600">
+                              </div>
+                              <span
+                                class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300 select-none">Faol</span>
+                            </label>
+                          </div>
+                        </div>
+                      </template>
+                      <template v-slot:button>
+                        <div class="w-4 mr-2 transform hover:text-green-500 hover:scale-110">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                          </svg>
+                        </div>
+                      </template>
+                    </Modal>
+
                   </div>
                 </td>
               </tr>
+
+              <!-- description  tahrirlash/-->
+              <tr class="hover:bg-gray-100 dark:hover:bg-gray-500" v-for="text in bonus?.data" :key="text.id">
+                <td class="py-3 px-6 text-left">
+                  <div class="flex items-center">
+                    <span class="text-base font-medium flex w-96">description</span>
+                  </div>
+                </td>
+                <td class="py-3 px-6 text-left">
+                  <div class="flex items-center">
+                    <span class="text-base font-medium flex w-96">{{ text.description }}</span>
+                  </div>
+                </td>
+                <td class="py-3 px-6 text-center">
+                  <button class="bg-green-200 text-green-700 py-1 px-4 rounded-full text-xs">
+                    Faol
+                  </button>
+                </td>
+                <td class="py-3 px-6 text-center">
+                  <div class="flex items-center justify-center">
+                    <!-- see -->
+                    <Modal :activeModal="activeModal" @open="changeActive" @close="closeModal" @submit="nextModal"
+                      :isImage="true" title="Ko'rish" btnTextSubmit="Tahrirlash">
+                      <template v-slot:body>
+                        <div class="flex justify-start gap-12">
+                          <div class="flex flex-col items-start gap-6">
+                            <span class="font-medium text-lg flex-1">{{ text.description }}</span>
+                          </div>
+                        </div>
+                      </template>
+                      <template v-slot:button>
+                        <div class="w-4 mr-2 transform hover:text-blue-500 hover:scale-110">
+                          <svg class="w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                          </svg>
+                        </div>
+                      </template>
+                    </Modal>
+                    <!-- edit -->
+                    <Modal :activeModal="activeModal" @open="changeActive" @close="closeModal" @submit="closeModal"
+                      :isImage="true" title="Tahrirlash" subtitle="Joylashuvni tahrirlash" btnTextSubmit="Saqlash">
+                      <template v-slot:body>
+                        <div class="space-y-5 pb-5">
+                          <div class="space-y-3">
+                            <p>Yangi matn kiriting uz</p>
+                            <textarea @input="desc = $event.target.value"   rows="4"
+                            class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="Write your thoughts here..."></textarea>
+                          </div>
+                          <div class="space-y-3">
+                            <p>Holati</p>
+                            <label class="relative inline-flex items-center mr-5 cursor-pointer">
+                              <input type="checkbox" value="" class="sr-only peer" checked />
+                              <div
+                                class="w-11 h-6 bg-gray-200 rounded-full dark:peer-focus:ring-indigo-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-indigo-600">
+                              </div>
+                              <span
+                                class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300 select-none">Faol</span>
+                            </label>
+                          </div>
+                        </div>
+                      </template>
+                      <template v-slot:button>
+                        <div class="w-4 mr-2 transform hover:text-green-500 hover:scale-110">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                          </svg>
+                        </div>
+                      </template>
+                    </Modal>
+
+                  </div>
+                </td>
+              </tr>
+
+              <!--  mundarija   tahrirlash/-->
+              <tr class="hover:bg-gray-100 dark:hover:bg-gray-500" v-for="outlineDesc in bonus?.data" :key="outlineDesc.id">
+                <td class="py-3 px-6 text-left">
+                  <div class="flex items-center">
+                    <span class="text-base font-medium flex w-96">Mundarija</span>
+                  </div>
+                </td>
+                <td class="py-3 px-6 text-left">
+                  <div class="flex items-center">
+                    <span class="text-base font-medium flex w-96">{{ outlineDesc.outline }}</span>
+                  </div>
+                </td>
+                <td class="py-3 px-6 text-center">
+                  <button class="bg-green-200 text-green-700 py-1 px-4 rounded-full text-xs">
+                    Faol
+                  </button>
+                </td>
+                <td class="py-3 px-6 text-center">
+                  <div class="flex items-center justify-center">
+                    <!-- see -->
+                    <Modal :activeModal="activeModal" @open="changeActive" @close="closeModal" @submit="nextModal"
+                      :isImage="true" title="Ko'rish" btnTextSubmit="Tahrirlash">
+                      <template v-slot:body>
+                        <div class="flex justify-start gap-12">
+                          <div class="flex flex-col items-start gap-6">
+                            <span class="font-medium text-lg flex-1">{{ outlineDesc.outline }}</span>
+                          </div>
+                        </div>
+                      </template>
+                      <template v-slot:button>
+                        <div class="w-4 mr-2 transform hover:text-blue-500 hover:scale-110">
+                          <svg class="w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                          </svg>
+                        </div>
+                      </template>
+                    </Modal>
+                    <!-- edit -->
+                    <Modal :activeModal="activeModal" @open="changeActive" @close="closeModal" @submit="closeModal"
+                      :isImage="true" title="Tahrirlash" subtitle="Joylashuvni tahrirlash" btnTextSubmit="Saqlash">
+                      <template v-slot:body>
+                        <div class="space-y-5 pb-5">
+                          <div class="space-y-3">
+                            <p>Yangi Title kiriting uz</p>
+                            <textarea @input="outline_desc = $event.target.value"   rows="4"
+                            class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="Write your thoughts here..."></textarea>
+                          </div>
+                          <div class="space-y-3">
+                            <p>Holati</p>
+                            <label class="relative inline-flex items-center mr-5 cursor-pointer">
+                              <input type="checkbox" value="" class="sr-only peer" checked />
+                              <div
+                                class="w-11 h-6 bg-gray-200 rounded-full dark:peer-focus:ring-indigo-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-indigo-600">
+                              </div>
+                              <span
+                                class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300 select-none">Faol</span>
+                            </label>
+                          </div>
+                        </div>
+                      </template>
+                      <template v-slot:button>
+                        <div class="w-4 mr-2 transform hover:text-green-500 hover:scale-110">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                          </svg>
+                        </div>
+                      </template>
+                    </Modal>
+
+                  </div>
+                </td>
+              </tr>
+
+              <!--  link  tahrirlash/-->
+              <tr class="hover:bg-gray-100 dark:hover:bg-gray-500" v-for="link in bonus?.data" :key="link.id">
+                <td class="py-3 px-6 text-left">
+                  <div class="flex items-center">
+                    <span class="text-base font-medium flex w-96">link</span>
+                  </div>
+                </td>
+                <td class="py-3 px-6 text-left">
+                  <div class="flex items-center">
+                    <span class="text-base font-medium">{{ link.sign_up_link }}</span>
+                  </div>
+                </td>
+                <td class="py-3 px-6 text-center">
+                  <button class="bg-green-200 text-green-700 py-1 px-4 rounded-full text-xs">
+                    Faol
+                  </button>
+                </td>
+                <td class="py-3 px-6 text-center">
+                  <div class="flex items-center justify-center">
+                    <!-- see -->
+                    <Modal :activeModal="activeModal" @open="changeActive" @close="closeModal" @submit="nextModal"
+                      :isImage="true" title="Ko'rish" btnTextSubmit="Tahrirlash">
+                      <template v-slot:body>
+                        <div class="flex justify-start gap-12">
+                          <div class="flex flex-col items-start gap-6">
+                            <span class="font-medium text-lg flex-1">{{ link.sign_up_link }}</span>
+                          </div>
+                        </div>
+                      </template>
+                      <template v-slot:button>
+                        <div class="w-4 mr-2 transform hover:text-blue-500 hover:scale-110">
+                          <svg class="w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                          </svg>
+                        </div>
+                      </template>
+                    </Modal>
+                    <!-- edit -->
+                    <Modal :activeModal="activeModal" @open="changeActive" @close="closeModal" @submit="closeModal"
+                      :isImage="true" title="Tahrirlash" subtitle="Joylashuvni tahrirlash" btnTextSubmit="Saqlash">
+                      <template v-slot:body>
+                        <div class="space-y-5 pb-5">
+                          <div class="space-y-3">
+                            <p>Link kiriting </p>
+                            <textarea @input="bonusLink = $event.target.value"   rows="4"
+                            class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="Write your thoughts here..."></textarea>
+                          </div>
+                          <div class="space-y-3">
+                            <p>Holati</p>
+                            <label class="relative inline-flex items-center mr-5 cursor-pointer">
+                              <input type="checkbox" value="" class="sr-only peer" checked />
+                              <div
+                                class="w-11 h-6 bg-gray-200 rounded-full dark:peer-focus:ring-indigo-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-indigo-600">
+                              </div>
+                              <span
+                                class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300 select-none">Faol</span>
+                            </label>
+                          </div>
+                        </div>
+                      </template>
+                      <template v-slot:button>
+                        <div class="w-4 mr-2 transform hover:text-green-500 hover:scale-110">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                          </svg>
+                        </div>
+                      </template>
+                    </Modal>
+
+                  </div>
+                </td>
+              </tr> 
             </tbody>
           </table>
         </div>
@@ -280,7 +517,7 @@
     </div>
 
     <!-- Saqlash/-->
-    <div class="flex justify-end mb-4">
+    <div class="flex justify-end mb-4" @click="sendEdit(bonus?.data[0])">
       <button type="button"
         class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
         Saqlash
@@ -310,10 +547,58 @@ const breadcrumbs = [
     url: "/",
   },
   {
-    label: "Bosh sahifa",
+    label: "Bonuslar sahifasi",
     url: "header",
   },
 ];
+
+let adminUrl = "https://superphotoshop.uz/api/dashboard"
+const bonus = ref("")
+
+async function getBonus() {
+ await fetch(adminUrl + "/bonus-course", {
+
+  }).then(res => res.json()).then(data => {
+    bonus.value = data;
+  })
+}
+getBonus()
+
+
+const img = ref("");
+const mainTitle = ref("");
+const second_title = ref("");
+const desc = ref("");
+const outline_desc = ref("");
+const bonusLink = ref("");
+
+function editImg(event){
+  img.value = event.target.files[0]
+}
+
+
+async function sendEdit(item) {
+  let id = item.id;
+  let formdata = new FormData();
+  formdata.append("img", img.value);
+  formdata.append("main_title", mainTitle.value);
+  formdata.append("title", second_title.value);
+  formdata.append("description", desc.value);
+  formdata.append("outline", outline_desc.value);
+  formdata.append("sign_up_link", bonusLink.value);
+
+
+  await submitEdit(adminUrl + "/bonus-course/update?id=" + id, formdata);
+
+  await getBonus()
+  mainTitle.value = ""
+  second_title.value = ""
+  desc.value = ""
+  outline_desc.value = ""
+}
+
+
+
 </script>
 
 <style scoped></style>

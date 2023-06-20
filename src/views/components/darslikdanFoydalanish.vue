@@ -59,7 +59,7 @@
                       </template>
                     </Modal>
                     <!-- edit -->
-                    <Modal :activeModal="activeModal" @open="changeActive" @close="closeModal" @submit="closeModal"
+                    <Modal :activeModal="activeModal" @open="changeActive" @close="closeModal" @submit="closeModal"  
                       :isImage="true" title="Tahrirlash" subtitle="Joylashuvni tahrirlash" btnTextSubmit="Saqlash">
                       <template v-slot:body>
                         <div class="space-y-5 pb-5">
@@ -270,8 +270,8 @@
     </div>
 
     <!-- Saqlash/-->
-    <div class="flex justify-end mb-4">
-      <button type="button" @click="sendEdit()"
+    <div class="flex justify-end mb-4" @click="sendEdit(usingInfo?.data[0])">
+      <button type="button" 
         class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
         Saqlash
       </button>
@@ -321,14 +321,17 @@ async function getUsing() {
 }
 getUsing()
 
-async function sendEdit(){
+
+
+async function sendEdit(item){
+  let id = item.id;
   let formdata = new FormData;
   formdata.append('title', title.value);
   formdata.append('description', desc.value);
   formdata.append('second_title', second_title.value);
   formdata.append('second_description', second_desc.value);
 
- await  submitEdit( adminUrl + "/use-textbook/update?id=7", formdata);
+ await  submitEdit( adminUrl + "/use-textbook/update?id=" + id, formdata);
  await getUsing()
 
   title.value = ""

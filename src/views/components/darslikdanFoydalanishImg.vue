@@ -20,22 +20,22 @@
               </div>
 
               <div class="space-y-3">
-                <p>Holati</p>
-                <label class="relative inline-flex items-center mr-5 cursor-pointer">
-                  <input @click="edit_status = !edit_status" type="checkbox" class="sr-only peer" :checked="edit_status"
-                    :value="edit_status" />
-                  <div
-                    class="w-11 h-6 bg-gray-200 rounded-full dark:peer-focus:ring-indigo-800 dark:bg-gray-700 after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600"
-                    :class="{
-                      'peer-checked:bg-indigo-600 peer-checked:after:border-white peer-checked:after:translate-x-full':
-                        edit_status,
-                    }"></div>
+                            <p>Holati</p>
+                            <label class="relative inline-flex items-center mr-5 cursor-pointer">
+                              <input @click="add_status = !add_status" type="checkbox" class="sr-only peer"
+                                :checked="add_status" :value="add_status" />
+                              <div
+                                class="w-11 h-6 bg-gray-200 rounded-full dark:peer-focus:ring-indigo-800 dark:bg-gray-700 after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600"
+                                :class="{
+                                  'peer-checked:bg-indigo-600 peer-checked:after:border-white peer-checked:after:translate-x-full':
+                                    edit_status,
+                                }"></div>
 
-                  <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300 select-none">
-                    {{ edit_status ? "Faol" : "Nofaol" }}
-                  </span>
-                </label>
-              </div>
+                              <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300 select-none">
+                                {{ edit_status ? "Faol" : "Nofaol" }}
+                              </span>
+                            </label>
+                          </div>
             </div>
           </template>
           <template v-slot:button>
@@ -98,7 +98,7 @@
 
                 <!-- EDIT -->
 
-                <Modal :activeModal="activeModal" @submit="closeModal" @open="changeActive" @close="closeModal"
+                <Modal :activeModal="activeModal" @submit="sendEdit(img)" @open="changeActive" @close="closeModal" 
                   :isImage="true" title="Tahrirlash" subtitle="Bosh sahifa rasmini tahrirlash" btnTextSubmit="Saqlash">
                   <template v-slot:body>
                     <div class="space-y-5 pb-5">
@@ -106,7 +106,7 @@
                         <p>Bosh sahifa rasmini tahrirsh</p>
                         <div class="flex items-center justify-center w-full">
                           
-                          <input @change="edit_img($event)"
+                          <input @change="editImg($event)"
                             class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                             id="file_input" type="file">
                         </div>
@@ -207,7 +207,8 @@ async function getUsingImg() {
 getUsingImg()
 
 const usging_img = ref("");
-const status = ref("");
+const add_status = ref(true)
+const edit_status = ref(true);
 
 
 function editImg(event){
@@ -217,12 +218,23 @@ function editImg(event){
 async function sendAdd() {
   let formdata = new FormData;
   formdata.append('img', usging_img.value);
-  formdata.append('status', status.value);
+  formdata.append('status', add_status.value  ? 1 : 0);
   
 
   await submitAdd(adminUrl + "/use-textbook-images/create", formdata);
   await getUsingImg()
   console.log(usging_img.value);
+}
+
+async function sendEdit(item) {
+  let id = item.id;
+  let formdata = new FormData();
+  formdata.append("img", usging_img.value);
+  formdata.append("status", edit_status.value ? 1 : 0);
+
+  await submitEdit(adminUrl + "/use-textbook-images/update?id=" + id, formdata);
+  await getUsingImg();
+
 }
 
 async function sendDelete(item) {
