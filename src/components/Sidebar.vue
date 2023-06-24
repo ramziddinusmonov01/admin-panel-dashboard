@@ -1,6 +1,6 @@
 <template>
   <!-- sidebar -->
-  <nav class="sidebar bg-white dark:bg-gray-800">
+  <nav class="sidebar bg-white dark:bg-gray-800" >
     <!-- sidebar head -->
     <div class="sidebar-head p-4">
       <router-link to="/" exact class="flex">
@@ -39,11 +39,11 @@
                   class="w-full text-left block rounded-md p-3 hover:bg-gray-200 dark:hover:bg-gray-700">
                   Navigatsiya sahifasini tahrirlash
                 </router-link>
-                <router-link to="/component/aboutUs"
+                <router-link to="/component/bosh-sahifa"
                   class="w-full text-left block rounded-md p-3 hover:bg-gray-200 dark:hover:bg-gray-700">
                   Bosh sahifa tahrirlash
                 </router-link>
-                <router-link to="/component/assortiment"
+                <router-link to="/component/photoshop-mavzulari"
                   class="w-full text-left block rounded-md p-3 hover:bg-gray-200 dark:hover:bg-gray-700">
                   Photoshop mazulari sahifasini tahrirlash
                 </router-link>
@@ -55,15 +55,19 @@
                   class="w-full text-left block rounded-md p-3 hover:bg-gray-200 dark:hover:bg-gray-700">
                   Darslikdan foydalanish sahifasini tahrirlash rasmi
                 </router-link>
-                <router-link to="/component/whyChoose"
+                <router-link to="/component/bonus"
                   class="w-full text-left block rounded-md p-3 hover:bg-gray-200 dark:hover:bg-gray-700">
                   Bonuslar sahifasini tahrirlash
+                </router-link>
+                <router-link to="/component/bonus-img"
+                  class="w-full text-left block rounded-md p-3 hover:bg-gray-200 dark:hover:bg-gray-700">
+                  Bonuslar sahifasi rasmlar
                 </router-link>
                 <router-link to="/component/socials"
                   class="w-full text-left block rounded-md p-3 hover:bg-gray-200 dark:hover:bg-gray-700">
                   Ijtioiy tarmoqlar sahifasini tahrirlash
                 </router-link>
-                <router-link to="/component/assortimentNav"
+                <router-link to="/component/comments"
                   class="w-full text-left block rounded-md p-3 hover:bg-gray-200 dark:hover:bg-gray-700">
                   O`quvchilar fikri sahifasini tahrirlash
                 </router-link>
@@ -75,10 +79,7 @@
                   class="w-full text-left block rounded-md p-3 hover:bg-gray-200 dark:hover:bg-gray-700">
                   Ro`yxatdan o`tish sahifasini tahrirlash
                 </router-link>
-                <router-link to="/component/footer"
-                  class="w-full text-left block rounded-md p-3 hover:bg-gray-200 dark:hover:bg-gray-700">
-                  Footer qismi
-                </router-link>
+
               </template>
             </menu-accordion>
           </div>
@@ -101,24 +102,12 @@
               </template>
             </menu-accordion>
           </div>
-          <!-- ad's -->
-          <!-- after complete course -->
-          <div class="item mt-3">
-            <div class="item mt-3">
-              <router-link to="/component/settings"
-                class="w-full text-left block rounded-md p-3  hover:bg-gray-200 dark:hover:bg-gray-700">
-                <div class="flex gap-4 ">
-                  <Icon icon="gg:components" />
-                  Settings
-                </div>
-              </router-link>
-            </div>
-          </div>
-          <!-- faq -->
+
         </div>
       </div>
     </div>
   </nav>
+
 </template>
 
 <script setup>

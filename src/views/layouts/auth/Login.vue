@@ -5,20 +5,20 @@
         <form @submit.prevent="submitForm">
           <div class="form-body lg:max-w-xl mx-auto lg:p-20 p-8 lg:mt-20 mt-5 space-y-8">
             <div class="space-y-3">
-              <h2 class="dark:text-white font-semibold text-gray-800 text-4xl">
-                Welcome, to Windzo<span class="text-primary">.</span>
+              <h2 class="dark:text-white font-semibold text-gray-800 text-4xl w-96">
+                Welcome to Dashboard<span class="text-primary">.</span>
               </h2>
             </div>
             <div class="space-y-5">
               <div class="relative z-0 w-full mb-6 group">
-                <input id="username" type="text" name="floating_email" v-model="username"
+                <input id="username" type="text" name="floating_email" @input="username = $event.target.value"
                   class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-primary focus:outline-none focus:ring-0 focus:border-primary peer"
                   placeholder=" " required />
                 <label for="floating_email"
                   class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary peer-focus:dark:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">username</label>
               </div>
               <div class="relative z-0 w-full mb-6 group">
-                <input type="password" name="floating_password" id="password" v-model="password"
+                <input type="password" name="floating_password" id="password" @input="password = $event.target.value"
                   class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-primary focus:outline-none focus:ring-0 focus:border-primary peer"
                   placeholder=" " required />
                 <label for="floating_password"
@@ -60,6 +60,7 @@
 
 <script setup>
 import { ref } from "vue";
+import { header, sidebar, token } from "@/helper/active-modal";
 const username = ref("");
 const password = ref("");
 const inCorrect = ref(false);
@@ -70,30 +71,35 @@ function incorrect() {
     incorrect.classList.remove("show");
   }, "1000");
 }
-function login() {
-  fetch("http://fazl.karimjonov.uz/api/admin/login", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      user_name: username.value,
-      password: password.value,
-    }),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      if (data.success) {
-        localStorage.setItem('token', data.data.token)
+async function login() {
+  try {
+    const response = await fetch("https://superphotoshop.uz/api/dashboard/site/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: username.value,
+        password: password.value,
+      }),
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+
+      if (data.status === '200') {
         window.location.href = "/";
+        localStorage.setItem('token', data?.data[0].auth_key);
       } else {
         inCorrect.value = true;
         incorrect();
       }
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+    } else {
+      throw new Error('Network response was not ok.');
+    }
+  } catch (error) {
+    console.error(error);
+  }
 }
 </script>
 <style>

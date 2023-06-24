@@ -1,6 +1,6 @@
 <template>
   <!-- this header -->
-  <header class="bg-white dark:bg-gray-800 p-2 border-b-2 dark:border-gray-700">
+  <header class="bg-white dark:bg-gray-800 p-2 border-b-2 dark:border-gray-700" > 
     <div class="wrap-header flex items-center gap-5 justify-between flex-wrap">
       <div class="flex flex-no-shrink items-center">
         <button class="text-gray-500 lg:hidden ml-3 block" @click="$emit('sidebarToggle', true)">
@@ -115,7 +115,7 @@
             </div> -->
             <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownSmallButton">
               <li>
-                <a href="#" class="block py-2 px-4 hover:bg-primary hover:text-white">User Profile</a>
+                <a href="#" class="block py-2 px-4 hover:bg-primary hover:text-white" >User Profile</a>
               </li>
               <!-- <li>
                 <a href="#" class="block py-2 px-4 hover:bg-primary hover:text-white">Settings</a>
@@ -127,11 +127,9 @@
               </li> -->
             </ul>
 
-            <router-link to="/auth/login" @click="removeToken()">
-              <div class="py-1">
-                <a href="#"
-                  class="block py-2 px-4 text-sm text-gray-700 dark:text-gray-200 hover:bg-primary hover:text-white">Sign
-                  out</a>
+            <router-link to="/auth/login">
+              <div class="py-1" >
+                <a href="#" class="block py-2 px-4 text-sm text-gray-700 dark:text-gray-200 hover:bg-primary hover:text-white" >Sign out</a>
               </div>
             </router-link>
           </div>
@@ -140,9 +138,10 @@
     </div>
   </header>
 </template>
-<style></style>
 <script>
 import { Icon } from "@iconify/vue";
+import {header, removeToken,  token} from  "@/helper/active-modal";
+
 // import { fullscreen } from "@/helper/fullscreen";
 // import { setDarkMode, loadDarkMode } from "@/helper/theme";
 export default {
@@ -191,9 +190,9 @@ export default {
     // fullscreen,
     // setDarkMode,
     // loadDarkMode,
-    removeToken() {
-      localStorage.removeItem("token");
-    },
+ 
+     
+    
     menuToggle: function () {
       this.menu = !this.menu;
     },
@@ -203,6 +202,8 @@ export default {
     // notifToggle: function () {
     //   this.notification = !this.notification;
     // },
+    
+  
     // notifToggleBlur: function () {
     //   this.notification = false;
     // },

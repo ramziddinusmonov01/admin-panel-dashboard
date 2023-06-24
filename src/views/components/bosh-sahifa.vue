@@ -7,7 +7,7 @@
     <breadcump :items="breadcrumbs"></breadcump>
 
     <!-- settingsn tahrirlash/-->
-    <div class="overflow-x-auto dark:bg-gray-800">
+  x  <div class="overflow-x-auto dark:bg-gray-800">
       <div class="w-full">
         <div class="bg-white dark:bg-gray-800 shadow-md rounded my-6">
           <table class="min-w-max w-full table-auto">
@@ -53,13 +53,13 @@
                       </template>
                     </Modal>
                     <!-- edit -->
-                    <Modal :activeModal="activeModal" @submit="closeModal" @open="changeActive" @close="closeModal"
+                    <Modal :activeModal="activeModal" @submit="sendEdit(title)" @open="changeActive" @close="closeModal"
                       :isImage="true" title="Tahrirlash" subtitle="Joylashuvni tahrirlash" btnTextSubmit="Saqlash">
                       <template v-slot:body>
                         <div class="space-y-5 pb-5">
                           <div class="space-y-3">
                             <p>Bosh sahifa sarlavhasini kiriting</p>
-                            <input type="text" placeholder="" @input="headerTitleONe = $event.target.value" :value="title.title"
+                            <input type="text" placeholder="" @input="headerTitleONe = $event.target.value" :v-model="title.title"
                               
                               class="p-2 border dark:border-gray-600 dark:bg-gray-700 w-full rounded outline-none" />
                           </div>
@@ -113,7 +113,7 @@
                       </template>
                     </Modal>
                     <!-- edit -->
-                    <Modal :activeModal="activeModal" @submit="closeModal" @open="changeActive" @close="closeModal"
+                    <Modal :activeModal="activeModal" @submit="sendEdit(desc)" @open="changeActive" @close="closeModal"
                       :isImage="true" title="Tahrirlash" subtitle="Joylashuvni tahrirlash" btnTextSubmit="Saqlash">
                       <template v-slot:body>
                         <div class="space-y-5 pb-5">
@@ -173,7 +173,7 @@
                       </template>
                     </Modal>
                     <!-- edit -->
-                    <Modal :activeModal="activeModal" @submit="closeModal" @open="changeActive"
+                    <Modal :activeModal="activeModal" @submit="sendEdit(AuthorName)" @open="changeActive"
                       @close="closeModal" :isImage="true" title="Tahrirlash" subtitle="Joylashuvni tahrirlash"
                       btnTextSubmit="Saqlash">
                       <template v-slot:body>
@@ -234,7 +234,7 @@
                       </template>
                     </Modal>
                     <!-- edit -->
-                    <Modal :activeModal="activeModal" @submit="closeModal" @open="changeActive"
+                    <Modal :activeModal="activeModal" @submit="sendEdit(link)" @open="changeActive"
                       @close="closeModal" :isImage="true" title="Tahrirlash" subtitle="Joylashuvni tahrirlash"
                       btnTextSubmit="Saqlash">
                       <template v-slot:body>
@@ -311,7 +311,7 @@
                       </template>
                     </Modal>
                     <!-- edit -->
-                    <Modal :activeModal="activeModal" @submit="closeModal" @open="changeActive"
+                    <Modal :activeModal="activeModal" @submit="sendEdit(firstImg)" @open="changeActive"
                       @close="closeModal" :isImage="true" title="Tahrirlash" subtitle="Bosh sahifa rasmini tahrirlash"
                       btnTextSubmit="Saqlash">
                       <template v-slot:body>
@@ -374,7 +374,7 @@
                       </template>
                     </Modal>
                     <!-- EDIT -->
-                    <Modal :activeModal="activeModal" @submit="closeModal" @open="changeActive"
+                    <Modal :activeModal="activeModal" @submit="sendEdit(headerSecondImg)" @open="changeActive"
                       @close="closeModal" :isImage="true" title="Tahrirlash" subtitle="Bosh sahifa rasmini tahrirlash"
                       btnTextSubmit="Saqlash">
                       <template v-slot:body>
@@ -439,7 +439,7 @@
                     </Modal>
    
                     <!-- EDIT -->
-                    <Modal :activeModal="activeModal" @submit="closeModal" @open="changeActive"
+                    <Modal :activeModal="activeModal" @submit="sendEdit(headerAutherImg)" @open="changeActive"
                          @close="closeModal" :isImage="true" title="Tahrirlash" subtitle="Bosh sahifa rasmini tahrirlash"
                          btnTextSubmit="Saqlash">
                          <template v-slot:body>
@@ -504,7 +504,7 @@
                       </Modal>
   
                       <!-- EDIT -->
-                      <Modal :activeModal="activeModal" @submit="closeModal" @open="changeActive"
+                      <Modal :activeModal="activeModal" @submit="sendEdit(headerVideo)" @open="changeActive"
                         @close="closeModal" :isImage="true" title="Tahrirlash" subtitle="Bosh sahifa rasmini tahrirlash"
                         btnTextSubmit="Saqlash">
                         <template v-slot:body>
@@ -539,18 +539,9 @@
 
 
       <!-- Saqlash/-->
-      <div class="flex justify-end mb-4">
-        <button @click="sendEdit()" type="button"
-          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
-          Saqlash
-        </button>
-      </div>
+    
     </div>
-
-
     <div class="spinner" v-if="loading"></div>
-
-
   </div>
  </div>
 </template>
@@ -580,11 +571,16 @@ const breadcrumbs = [
   },
 ];
 let adminUrl = "https://superphotoshop.uz/api/dashboard"
-let amenities = ref([])
+let amenities = ref([]);
 
 async function getData() {
+  const token = localStorage.getItem('token')
   fetch(adminUrl + "/header-section", {
-
+    method:'POST',
+    headers:{
+      'Content-type':'aplication/json',
+      'Authorization':`Bearer ${token}`
+    }
   }).then(res => res.json()).then(data => {
     amenities.value = data;
     loading.value = false
@@ -622,7 +618,8 @@ function editVideo(event) {
 }
 
 
-async function sendEdit() {
+async function sendEdit(title) {
+  const id = title
   let formdata = new FormData();
   formdata.append("title", headerTitleONe.value);
   formdata.append("subtitle", headerTitleTwo.value);
@@ -633,8 +630,8 @@ async function sendEdit() {
   formdata.append("photo", headerAuthorImg.value);
   formdata.append("video_url", headerVideo.value);
 
-  submitEdit( adminUrl + "/header-section/update?id=1", formdata);
-  getData();
+ await submitEdit( adminUrl + `/header-section/update?id=${id}`, formdata);
+ await getData();
 }
 
 
@@ -646,112 +643,26 @@ async function sendEdit() {
 
 <style scoped>
 .spinner {
- width: 56px;
- height: 56px;
- margin: 0 auto;
- border-radius: 50%;
- color: #004dff;
- background: linear-gradient(currentColor 0 0) center/100% 4px,
-          linear-gradient(currentColor 0 0) center/4px 100%,
-          radial-gradient(farthest-side,#0000 calc(100% - 7px),currentColor calc(100% - 6px)),
-          radial-gradient(circle 7px,currentColor 94%,#0000 0);
- background-repeat: no-repeat;
- animation: spinner-mu2ebf 1s infinite linear;
- position: relative;
+  --d: 24.6px;
+  width: 4.5px;
+  height: 4.5px;
+  border-radius: 50%;
+  color: #474bff;
+  margin: 200px auto;
+  box-shadow: calc(1*var(--d))      calc(0*var(--d))     0 0,
+          calc(0.707*var(--d))  calc(0.707*var(--d)) 0 1.1px,
+          calc(0*var(--d))      calc(1*var(--d))     0 2.2px,
+          calc(-0.707*var(--d)) calc(0.707*var(--d)) 0 3.4px,
+          calc(-1*var(--d))     calc(0*var(--d))     0 4.5px,
+          calc(-0.707*var(--d)) calc(-0.707*var(--d))0 5.6px,
+          calc(0*var(--d))      calc(-1*var(--d))    0 6.7px;
+  animation: spinner-a90wxe 1s infinite steps(8);
 }
 
-.spinner::before {
- content: "";
- position: absolute;
- inset: 0;
- border-radius: inherit;
- background: inherit;
- transform: rotate(45deg);
-}
-
-@keyframes spinner-mu2ebf {
- to {
-  transform: rotate(.5turn);
- }
-}
-
-
-/* DELETE */
-.circ {
-  backface-visibility: hidden;
-  margin: 60px auto;
-  width: 180px;
-  height: 180px;
-  border-radius: 0px 0px 50px 50px;
-  position: relative;
-  z-index: -1;
-  left: 0%;
-  top: 5%;
-  overflow: hidden;
-}
-
-.hands {
-  margin-top: 140px;
-  width: 120px;
-  height: 120px;
-  position: absolute;
-  background-color: #111;
-  border-radius: 20px;
-  box-shadow: -1px -4px 0px 0px rgba(240,220,220,1);
-  transform: rotate(45deg);
-  top: 75%;
-  left: 16%;
-  z-index: 1;
-  animation: bodyAnim 1.5s infinite alternate;
-  animation-timing-function: ease-out;
-}
-
-.load {
-  position: absolute;
-  width: 7ch;
-  height: 32px;
-  text-align: left;
-  line-height: 32px;
-  margin: -10px auto;
-  font-family: 'Julius Sans One', sans-serif;
-  font-size: 28px;
-  font-weight: 400;
-  color: rgb(155, 152, 152);
-  left: 2%;
-  top: 5%;
-  animation: fontAnim 3.75s infinite;
-  animation-timing-function: ease-out;
-  word-wrap: break-word;
-  display: block;
-  overflow: hidden;
-}
-
-@keyframes fontAnim {
-  0% {
-    width: 7ch;
-  }
-
-  16% {
-    width: 8ch;
-  }
-
-  32% {
-    width: 9ch;
-  }
-
-  48% {
-    width: 10ch;
-  }
-
-  64% {
-    width: 11ch;
-  }
-
-  80% {
-    width: 12ch;
-  }
-
+@keyframes spinner-a90wxe {
   100% {
-    width: 13ch;
+    transform: rotate(1turn);
   }
-}</style>
+}
+
+</style>

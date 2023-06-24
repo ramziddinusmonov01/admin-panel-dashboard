@@ -59,7 +59,7 @@
                       </template>
                     </Modal>
                     <!-- edit -->
-                    <Modal :activeModal="activeModal" @open="changeActive" @close="closeModal" @submit="closeModal"  
+                    <Modal :activeModal="activeModal" @open="changeActive" @close="closeModal" @submit="sendEdit(usingText)"  
                       :isImage="true" title="Tahrirlash" subtitle="Joylashuvni tahrirlash" btnTextSubmit="Saqlash">
                       <template v-slot:body>
                         <div class="space-y-5 pb-5">
@@ -120,7 +120,7 @@
                       </template>
                     </Modal>
                     <!-- edit -->
-                    <Modal :activeModal="activeModal" @open="changeActive" @close="closeModal" @submit="closeModal"
+                    <Modal :activeModal="activeModal" @open="changeActive" @close="closeModal" @submit="sendEdit(usingSecondTitle)"
                       :isImage="true" title="Tahrirlash" subtitle="Joylashuvni tahrirlash" btnTextSubmit="Saqlash">
                       <template v-slot:body>
                         <div class="space-y-5 pb-5">
@@ -178,7 +178,7 @@
                       </template>
                     </Modal>
                     <!-- edit -->
-                    <Modal :activeModal="activeModal" @open="changeActive" @close="closeModal" @submit="closeModal"
+                    <Modal :activeModal="activeModal" @open="changeActive" @close="closeModal" @submit="sendEdit(usingDesc)"
                       :isImage="true" title="Tahrirlash" subtitle="Joylashuvni tahrirlash" btnTextSubmit="Saqlash">
                       <template v-slot:body>
                         <div class="space-y-5 pb-5">
@@ -237,7 +237,7 @@
                       </template>
                     </Modal>
                     <!-- edit -->
-                    <Modal :activeModal="activeModal" @open="changeActive" @close="closeModal" @submit="closeModal"
+                    <Modal :activeModal="activeModal" @open="changeActive" @close="closeModal" @submit="sendEdit(usingSecondDesc)"
                       :isImage="true" title="Tahrirlash" subtitle="Joylashuvni tahrirlash" btnTextSubmit="Saqlash">
                       <template v-slot:body>
                         <div class="space-y-5 pb-5">
@@ -269,13 +269,8 @@
       </div>
     </div>
 
-    <!-- Saqlash/-->
-    <div class="flex justify-end mb-4" @click="sendEdit(usingInfo?.data[0])">
-      <button type="button" 
-        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
-        Saqlash
-      </button>
-    </div>
+ 
+    <div class="spinner" v-if="loading"></div>
   </div>
 </template>
 
@@ -306,6 +301,7 @@ const breadcrumbs = [
 ];
 let adminUrl = "https://superphotoshop.uz/api/dashboard"
 const usingInfo = ref("")
+const loading = ref(true)
 
 const title = ref("");
 const second_title = ref("");
@@ -313,10 +309,16 @@ const desc = ref("");
 const second_desc = ref("");
 
 async function getUsing() {
+  const token = localStorage.getItem('token')
  await fetch(adminUrl + "/use-textbook", {
-
+    method:'POST',
+    headers:{
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    }
   }).then(res => res.json()).then(data => {
     usingInfo.value = data;
+    loading.value = false
   })
 }
 getUsing()
@@ -334,14 +336,32 @@ async function sendEdit(item){
  await  submitEdit( adminUrl + "/use-textbook/update?id=" + id, formdata);
  await getUsing()
 
-  title.value = ""
-  desc.value = ""
-  second_title.value = ""
-  second_desc.value = ""
-  console.log("saqlandi");
 }
 
 
 </script>
 
-<style scoped></style>
+<style scoped>
+.spinner {
+  --d: 24.6px;
+  width: 4.5px;
+  height: 4.5px;
+  border-radius: 50%;
+  color: #474bff;
+  margin:200px auto;
+  box-shadow: calc(1*var(--d))      calc(0*var(--d))     0 0,
+          calc(0.707*var(--d))  calc(0.707*var(--d)) 0 1.1px,
+          calc(0*var(--d))      calc(1*var(--d))     0 2.2px,
+          calc(-0.707*var(--d)) calc(0.707*var(--d)) 0 3.4px,
+          calc(-1*var(--d))     calc(0*var(--d))     0 4.5px,
+          calc(-0.707*var(--d)) calc(-0.707*var(--d))0 5.6px,
+          calc(0*var(--d))      calc(-1*var(--d))    0 6.7px;
+  animation: spinner-a90wxe 1s infinite steps(8);
+}
+
+@keyframes spinner-a90wxe {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+</style>

@@ -15,8 +15,8 @@
         <template v-slot:body>
           <div class="space-y-5 pb-5">
             <div class="space-y-3">
-              <p>Element nomi</p>
-              <input type="text" placeholder="" v-model="state.add_title"
+              <p>Ismini kiriting</p>
+              <input type="text" placeholder="" @input="state.add_title = $event.target.value"
                 class="p-2 border dark:border-gray-600 dark:bg-gray-700 w-full rounded outline-none" />
               <span class="text-red-500 mt-3 block rounded-full text-xs" v-for="error in v$.add_title.$errors"
                 :key="error.$uid"> Element nomini kiritishingiz
@@ -27,7 +27,7 @@
               <label for="default-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sahifa
                 tavsifini
                 kiriting</label>
-              <textarea id="message" rows="4" v-model="state.add_desc"
+              <textarea id="message" rows="4" @input="state.add_desc = $event.target.value"
                 class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Sahifa tavsifini shu yerga yozing"></textarea>
               <span class="text-red-500 mt-3 block rounded-full text-xs" v-for="error in v$.add_desc.$errors"
@@ -90,7 +90,7 @@
                 </td>
                 <td class="py-3 px-6 text-left">
                   <div class="flex items-center">
-                    <span class="min-w-max text-base font-medium"> {{ item.title }} </span>
+                    <span class="min-w-max text-base font-medium"> {{ item.name }} </span>
                   </div>
                 </td>
                 <td class="py-3 px-6 text-left">
@@ -111,9 +111,9 @@
                       <template v-slot:body>
                         <div class="grid grid-cols-4 gap-4">
                           <span class="font-medium text-lg">Nomi</span>
-                          <span class="font-normal text-base col-span-3"> {{ item.title }} </span>
+                          <span class="font-normal text-base col-span-3"> {{ item.name }} </span>
                           <span class="font-medium text-lg">Tavsifi</span>
-                          <span class="font-normal text-base col-span-3"> {{ item.content }} </span>
+                          <span class="font-normal text-base col-span-3"> {{ item.description }} </span>
                           <span class="font-medium text-lg">Rasm</span>
                           <span class="block font-normal text-base col-span-3">
                             <img class="w-44" :src="item.image" alt="">
@@ -147,7 +147,7 @@
                           <div class="space-y-3">
                             <p>Card nomi</p>
                             <input type="text" placeholder="" @input="edit_title = $event.target.value"
-                              @keydown.enter="sendEdit(item)" :value="edit_title"
+                              @submit="sendEdit(item)" :value="item.name"
                               class="p-2 border dark:border-gray-600 dark:bg-gray-700 w-full rounded outline-none" />
                           </div>
                           <div>
@@ -155,7 +155,7 @@
                               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sahifa tavsifini
                               kiriting</label>
                             <textarea id="message" rows="4" @input="edit_desc = $event.target.value"
-                              @keydown.enter="sendEdit(item)" :value="edit_desc"
+                              @keydown.enter="sendEdit(item)" :value="item.description"
                               class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                               placeholder="Sahifa tavsifini shu yerga yozing"></textarea>
                           </div>
@@ -193,6 +193,7 @@
                         </div>
                       </template>
                     </Modal>
+                     
                     <!-- delete -->
                     <Modal :activeModal="activeModal" @open="changeActive" @close="closeModal" @submit="sendDelete(item)"
                       :isImage=true title="O'chirish" subtitle="Siz haqiqatdan ham bu elementi o'chirishni xohlaysizmi"
@@ -218,7 +219,7 @@
       </div>
     </div>
 
-
+    <div class="spinner" v-if="loading"></div>
   </div>
 </template>
 
@@ -236,11 +237,20 @@ const adminUrl = 'https://superphotoshop.uz/api/dashboard'
 
 // main items
 let items = ref()
+const loading = ref(true)
 
 async function getData() {
-  const res = await fetch(adminUrl + '/pupil-comments')
+  const token = localStorage.getItem('token')
+  const res = await fetch(adminUrl + '/pupil-comments', {
+    method: 'POST',
+    headers:{
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    }
+  })
   const req = await res.json()
   items.value = req
+  loadingv.value = false
 }
 
 onMounted(() => {
@@ -294,11 +304,9 @@ async function sendAdd() {
   if (result) {
     await submitEdit(adminUrl + '/pupil-comments/create', formdata)
     await getData()
-    state.add_title = ''
-    state.edit_desc = ''
-    state.add_image = ''
-    add_status.value = true
+
   }
+
 
 }
 
@@ -327,10 +335,7 @@ async function sendEdit(item) {
   await submitEdit(adminUrl + '/pupil-comments/update?id=' + id, formdata)
   await getData()
 
-  edit_title.value = ''
-  edit_desc.value = ''
-  edit_image.value = ''
-  edit_status.value = true
+
 }
 
 async function sendDelete(item) {
@@ -350,4 +355,27 @@ const breadcrumbs = [
 
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+.spinner {
+  --d: 24.6px;
+  width: 4.5px;
+  height: 4.5px;
+  border-radius: 50%;
+  color: #474bff;
+  margin:200px auto;
+  box-shadow: calc(1*var(--d))      calc(0*var(--d))     0 0,
+          calc(0.707*var(--d))  calc(0.707*var(--d)) 0 1.1px,
+          calc(0*var(--d))      calc(1*var(--d))     0 2.2px,
+          calc(-0.707*var(--d)) calc(0.707*var(--d)) 0 3.4px,
+          calc(-1*var(--d))     calc(0*var(--d))     0 4.5px,
+          calc(-0.707*var(--d)) calc(-0.707*var(--d))0 5.6px,
+          calc(0*var(--d))      calc(-1*var(--d))    0 6.7px;
+  animation: spinner-a90wxe 1s infinite steps(8);
+}
+
+@keyframes spinner-a90wxe {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+</style>

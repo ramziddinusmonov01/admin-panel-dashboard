@@ -8,6 +8,7 @@ const editModal = ref(false)
 const deleteModal = ref(false)
 
 
+
 function changeActive(id) {
   activeModal.value = id
 }
@@ -22,8 +23,12 @@ function nextModal(id) {
 
 
 async function submitAdd(url, formdata) {
+  const myHeaders = new Headers()
+  const token = localStorage.getItem('token')
+  myHeaders.append("Authorization", `Bearer ${token }`)
   const requestOptions = {
     method: 'POST',
+    headers: myHeaders ,
     body: formdata,
     redirect: 'follow'
   };
@@ -37,8 +42,12 @@ async function submitAdd(url, formdata) {
 }
 
 async function submitEdit(adminUrl, formdata) {
+  const myHeaders = new Headers()
+  const token = localStorage.getItem('token')
+  myHeaders.append("Authorization", `Bearer ${token }`)
     await fetch(adminUrl,  {
     method: 'POST',
+    headers:myHeaders,
     body: formdata,
   }).then(res => res.json()).then(data => {
     console.log(data);
@@ -50,8 +59,12 @@ async function submitEdit(adminUrl, formdata) {
 
 
 async function submitDelete(url) {
+  const myHeaders = new Headers()
+  const token = localStorage.getItem('token')
+  myHeaders.append("Authorization", `Bearer ${token }`)
   const requestOptions = {
     method: 'DELETE',
+    headers:myHeaders,
     redirect: 'follow'
   };
 
@@ -62,4 +75,15 @@ async function submitDelete(url) {
   activeModal.value = 0
 }
 
-export { activeModal, changeActive, closeModal, nextModal, submitAdd, submitEdit, submitDelete }
+function removeToken() {
+  // localStorage dan tokenni o'chirish
+  localStorage.removeItem('token');
+
+
+  // Yoki localStorage.clear() orqali barcha ma'lumotlarni o'chirish mumkin
+}
+
+
+
+
+export { activeModal, changeActive, closeModal, nextModal, submitAdd, submitEdit, submitDelete,  removeToken,  }

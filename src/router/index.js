@@ -9,19 +9,18 @@ import Login from "../views/layouts/auth/Login.vue";
 import Register from "../views/layouts/auth/Register.vue";
 import Settings from "../views/components/settings.vue";
 import Navigation from "../views/components/Navigation.vue"
-import aboutUs from "../views/components/aboutUs.vue";
-import Assortiment from "../views/components/assortiment.vue";
+import BoshSahifa from "../views/components/bosh-sahifa.vue";
+import PhotoshopMavulari from "../views/components/photoshop-mavzulari.vue";
 import videoPrice from "../views/components/videoPrice.vue";
 import DarslikdanFoydalanish from "../views/components/darslikdanFoydalanish.vue"
 import RarslinkdanFoydalanishImg from "../views/components/darslikdanFoydalanishImg.vue"
-import whyChoose from "../views/components/whyChoose.vue";
+import Bonus from "../views/components/Bonus.vue";
+import Bonusimg from "../views/components/bonus-img.vue"
 
-import comments from "../views/components/comments.vue";
 import register from "../views/components/register.vue";
 import footer from "../views/components/footer.vue";
-import authorMain from "../views/components/author-main.vue";
 import socials from "../views/components/socials.vue";
-import assortimentNav from "../views/components/assortimentNav.vue";
+import Comments from "../views/components/comments.vue";
 import authorMain from "../views/components/author-main.vue";
 import authorImages from "../views/components/author-images.vue";
 // layouts
@@ -43,10 +42,10 @@ const routes = [
     meta: { title: "Dashboard " + appname },
   },
   {
-    path: "/component/assortimentNav",
-    name: "assortimentNav",
-    component: assortimentNav,
-    meta: { title: "assortimentNav" + appname },
+    path: "/component/comments",
+    name: "comments",
+    component: Comments,
+    meta: { title: "comments" + appname },
   },
   {
     path: "/component/footer",
@@ -55,10 +54,10 @@ const routes = [
     meta: { title: "footer" + appname },
   },
   {
-    path: "/component/aboutUs",
-    name: "aboutUs",
-    component: aboutUs,
-    meta: { title: "aboutUs" + appname },
+    path: "/component/bosh-sahifa",
+    name: "boshSahifa",
+    component: BoshSahifa,
+    meta: { title: "boshSahifa" + appname },
   },
   {
     path: "/component/register",
@@ -79,10 +78,10 @@ const routes = [
     meta: { title: "navigation" + appname },
   },
   {
-    path: "/component/assortiment",
-    name: "Assortiment",
-    component: Assortiment,
-    meta: { title: "Assortiment" + appname },
+    path: "/component/photoshop-mavzulari",
+    name: "photoshopMavzulari",
+    component: PhotoshopMavulari,
+    meta: { title: "photoshopMavzulari" + appname },
   },
   {
     path: "/component/videoPrice",
@@ -103,10 +102,16 @@ const routes = [
     meta: {title:"Darslikdanfoydalanishimg" + appname }
   },
   {
-    path: "/component/whyChoose",
-    name: "whyChoose",
-    component: whyChoose,
-    meta: { title: "whyChoose" + appname },
+    path: "/component/bonus",
+    name: "bonus",
+    component: Bonus,
+    meta: { title: "bonus" + appname },
+  },
+  {
+    path: "/component/bonus-img",
+    name: "bonusImg",
+    component: Bonusimg,
+    meta: { title: "Bonusimg" + appname },
   },
   {
     path: "/component/socials",
@@ -143,6 +148,7 @@ const routes = [
     name: "Login",
     component: Login,
     meta: { title: "Login" + appname, hideNav: true },
+ 
   },
   {
     path: "/auth/register",

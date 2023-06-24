@@ -143,7 +143,14 @@ const adminUrl = "https://superphotoshop.uz/api/dashboard";
 let items = ref()
 
 async function getData() {
-  const res = await fetch(adminUrl + '/author-about')
+  const token = localStorage.getItem('token')
+  const res = await fetch(adminUrl + '/author-about', {
+    method:'POST',
+    headers:{
+      'Content-Type':'application/json',
+      'Authorization':`Bearer ${token}`
+    }
+  })
   const req = await res.json()
   items.value = req
 }

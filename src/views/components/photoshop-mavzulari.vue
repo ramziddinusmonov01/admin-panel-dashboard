@@ -23,7 +23,7 @@
                 </div>
                 <div class="space-y-3">
                   <p>Matn kiriting</p>
-                  <textarea @input="desc = $event.target.value"   rows="4"
+                  <textarea @input="desc = $event.target.value"    rows="4"
                     class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Write your thoughts here..."></textarea>
                 </div>
@@ -132,7 +132,7 @@
                             </div>
                             <div class="space-y-3">
                               <p>Izohni kiriting</p>
-                              <textarea @input="desc = $event.target.value" :value="themsTitle.desc" id="message" rows="4"
+                              <textarea @input="desc = $event.target.value" :value="themsTitle.description" id="message" rows="4"
                                 class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="Write your thoughts here..."></textarea>
 
@@ -194,15 +194,6 @@
           </div>
         </div>
       </div>
-
-      <!-- Saqlash/-->
-      <div class="flex justify-end mb-4">
-        <button type="button"
-          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
-          Saqlash
-        </button>
-      </div>
-
       
       <div class="spinner" v-if="loading"></div>
     </div>
@@ -249,8 +240,13 @@ let adminUrl = "https://superphotoshop.uz/api/dashboard";
 const photoshopThems = ref([])
 
 async function getThems() {
+  const token = localStorage.getItem('token')
   fetch(adminUrl + '/photoshop-themes', {
-
+    method:"POST",
+    headers:{
+      'Content-Type':'application/json',
+      'Authorization':`Bearer ${token}`
+    }
   }).then(res => res.json().then(data => {
     photoshopThems.value = data
     loading.value = false
@@ -327,201 +323,27 @@ async function sendDelete(item) {
 
 <style scoped>
 .spinner {
- width: 56px;
- height: 56px;
- margin: 0 auto;
- border-radius: 50%;
- color: #004dff;
- background: linear-gradient(currentColor 0 0) center/100% 4px,
-          linear-gradient(currentColor 0 0) center/4px 100%,
-          radial-gradient(farthest-side,#0000 calc(100% - 7px),currentColor calc(100% - 6px)),
-          radial-gradient(circle 7px,currentColor 94%,#0000 0);
- background-repeat: no-repeat;
- animation: spinner-mu2ebf 1s infinite linear;
- position: relative;
+  --d: 24.6px;
+  width: 4.5px;
+  height: 4.5px;
+  border-radius: 50%;
+  color: #474bff;
+  margin:200px auto;
+  box-shadow: calc(1*var(--d))      calc(0*var(--d))     0 0,
+          calc(0.707*var(--d))  calc(0.707*var(--d)) 0 1.1px,
+          calc(0*var(--d))      calc(1*var(--d))     0 2.2px,
+          calc(-0.707*var(--d)) calc(0.707*var(--d)) 0 3.4px,
+          calc(-1*var(--d))     calc(0*var(--d))     0 4.5px,
+          calc(-0.707*var(--d)) calc(-0.707*var(--d))0 5.6px,
+          calc(0*var(--d))      calc(-1*var(--d))    0 6.7px;
+  animation: spinner-a90wxe 1s infinite steps(8);
 }
 
-.spinner::before {
- content: "";
- position: absolute;
- inset: 0;
- border-radius: inherit;
- background: inherit;
- transform: rotate(45deg);
-}
-
-@keyframes spinner-mu2ebf {
- to {
-  transform: rotate(.5turn);
- }
-}
-
-/* DELETED STYLES */
-.circ {
-  backface-visibility: hidden;
-  margin: 60px auto;
-  width: 180px;
-  height: 180px;
-  border-radius: 0px 0px 50px 50px;
-  position: relative;
-  z-index: -1;
-  left: 0%;
-  top: 5%;
-  overflow: hidden;
-}
-
-.hands {
-  margin-top: 140px;
-  width: 120px;
-  height: 120px;
-  position: absolute;
-  background-color: #111;
-  border-radius: 20px;
-  box-shadow: -1px -4px 0px 0px rgba(240, 220, 220, 1);
-  transform: rotate(45deg);
-  top: 75%;
-  left: 16%;
-  z-index: 1;
-  animation: bodyAnim 1.5s infinite alternate;
-  animation-timing-function: ease-out;
-}
-
-.load {
-  position: absolute;
-  width: 7ch;
-  height: 32px;
-  text-align: left;
-  line-height: 32px;
-  margin: -10px auto;
-  font-family: 'Julius Sans One', sans-serif;
-  font-size: 28px;
-  font-weight: 400;
-  color: rgb(155, 152, 152);
-  left: 2%;
-  top: 5%;
-  animation: fontAnim 3.75s infinite;
-  animation-timing-function: ease-out;
-  word-wrap: break-word;
-  display: block;
-  overflow: hidden;
-}
-
-@keyframes fontAnim {
-  0% {
-    width: 7ch;
-  }
-
-  16% {
-    width: 8ch;
-  }
-
-  32% {
-    width: 9ch;
-  }
-
-  48% {
-    width: 10ch;
-  }
-
-  64% {
-    width: 11ch;
-  }
-
-  80% {
-    width: 12ch;
-  }
-
+@keyframes spinner-a90wxe {
   100% {
-    width: 13ch;
+    transform: rotate(1turn);
   }
 }
-
-
-/* DELETED STYLES*/
-body {
-	 background: #1d1d1d;
-	 height: 100%;
-}
- .pac-man {
-	 border-radius: 50%;
-	 margin: 0 auto;
-	 margin-top: 8em;
-	 border-radius: 100em 100em 0 0;
-	 background: #f00;
-	 transform-origin: bottom;
-	 animation: eating-top .5s infinite;
-}
- .pac-man, .pac-man::before {
-	 width: 70px;
-	 height: calc(35px);
-	 background: #fed75a;
-}
- .pac-man::before {
-	 content: '';
-	 display: block;
-	 margin-top: calc(35px);
-	 position: absolute;
-	 transform-origin: top;
-	 border-radius: 0 0 100em 100em;
-	 transform: rotate(80deg);
-	 animation: eating-bottom .5s infinite;
-}
- .pac-man::after {
-	 position: absolute;
-	 border-radius: 100em;
-	 content: '';
-	 display: block;
-	 height: 20px;
-	 width: 20px;
-	 margin-top: calc(25px);
-	 margin-left: calc(25px);
-	 transform-origin: center;
-	 animation: center .5s infinite, ball .5s -0.33s infinite linear;
-}
- @keyframes eating-top {
-	 0% {
-		 transform: rotate(-40deg);
-	}
-	 50% {
-		 transform: rotate(0deg);
-	}
-	 100% {
-		 transform: rotate(-40deg);
-	}
-}
- @keyframes eating-bottom {
-	 0% {
-		 transform: rotate(80deg);
-	}
-	 50% {
-		 transform: rotate(0deg);
-	}
-	 100% {
-		 transform: rotate(80deg);
-	}
-}
- @keyframes center {
-	 0% {
-		 transform: rotate(40deg);
-	}
-	 50% {
-		 transform: rotate(0deg);
-	}
-	 100% {
-		 transform: rotate(40deg);
-	}
-}
- @keyframes ball {
-	 0% {
-		 opacity: .7;
-		 box-shadow: 70px 0 0 0 #fed75a, 120px 0 0 0 #fed75a, 170px 0 0 0 #fed75a, 220px 0 0 0 #fed75a;
-	}
-	 100% {
-		 box-shadow: 20px 0 0 0 #fed75a, 70px 0 0 0 #fed75a, 120px 0 0 0 #fed75a, 170px 0 0 0 #fed75a;
-	}
-}
- 
-
 
 
 

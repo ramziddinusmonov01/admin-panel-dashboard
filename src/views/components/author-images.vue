@@ -167,6 +167,7 @@
         </div>
       </div>
     </div>
+    <div class="spinner" v-if="loading"></div>
   </div>
 </template>
 
@@ -183,11 +184,20 @@ const adminUrl = "https://superphotoshop.uz/api/dashboard";
 
 // main items
 let items = ref()
+const loading = ref(true)
 
 async function getData() {
-  const res = await fetch(adminUrl + '/author-images')
+  const token = localStorage.getItem('token')
+  const res = await fetch(adminUrl + '/author-images', {
+    method:'POST',
+    headers:{
+      'Content-type': 'aplication/json',
+      Authorization : `Bearer ${token}`
+    }
+  })
   const req = await res.json()
   items.value = req
+  loading.value = false
 }
 
 onMounted(() => {
@@ -277,4 +287,28 @@ const breadcrumbs = [
 ]
 </script>
 
-<style lang="scss" scoped></style>
+<style  scoped>
+.spinner {
+  --d: 24.6px;
+  width: 4.5px;
+  height: 4.5px;
+  border-radius: 50%;
+  color: #474bff;
+  margin:200px auto;
+  box-shadow: calc(1*var(--d))      calc(0*var(--d))     0 0,
+          calc(0.707*var(--d))  calc(0.707*var(--d)) 0 1.1px,
+          calc(0*var(--d))      calc(1*var(--d))     0 2.2px,
+          calc(-0.707*var(--d)) calc(0.707*var(--d)) 0 3.4px,
+          calc(-1*var(--d))     calc(0*var(--d))     0 4.5px,
+          calc(-0.707*var(--d)) calc(-0.707*var(--d))0 5.6px,
+          calc(0*var(--d))      calc(-1*var(--d))    0 6.7px;
+  animation: spinner-a90wxe 1s infinite steps(8);
+}
+
+@keyframes spinner-a90wxe {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+
+</style>

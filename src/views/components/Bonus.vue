@@ -22,7 +22,6 @@
               <tr class="bg-gray-200 dark:bg-gray-700 dark:text-gray-400 text-gray-600 uppercase text-sm leading-normal">
                 <th class="py-3 px-6 text-left">nomi</th>
                 <th class="py-3 px-6 text-left">komponentalar</th>
-                <th class="py-3 px-6 text-center">Holati</th>
                 <th class="py-3 px-6 text-center">Actions</th>
               </tr>
             </thead>
@@ -42,11 +41,6 @@
                       <img class="w-48" :src="item.image" :alt="item.title">
                     </span>
                   </div>
-                </td>
-                <td class="py-3 px-6 text-center">
-                  <button class="bg-green-200 text-green-700 py-1 px-4 rounded-full text-xs">
-                    Faol
-                  </button>
                 </td>
                 <td class="py-3 px-6 text-center">
                   <div class="flex items-center justify-center">
@@ -76,28 +70,17 @@
                       </template>
                     </Modal>
                     <!-- edit -->
-                    <Modal :activeModal="activeModal" @open="changeActive" @close="closeModal" @submit="closeModal"
+                    <Modal :activeModal="activeModal" @open="changeActive" @close="closeModal" @submit="sendEdit(item)"
                       :isImage="true" title="Tahrirlash" subtitle="Joylashuvni tahrirlash" btnTextSubmit="Saqlash">
                       <template v-slot:body>
                         <div class="space-y-5 pb-5">
                           <div class="space-y-3">
-                            <p>Yangi Title kiriting uz</p>
+                            <p>Yangi Rasm kiriting</p>
                             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload
                              file</label>
                             <input @change="editImg($event)"
                               class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                               id="file_input" type="file">
-                          </div>
-                          <div class="space-y-3">
-                            <p>Holati</p>
-                            <label class="relative inline-flex items-center mr-5 cursor-pointer">
-                              <input type="checkbox" value="" class="sr-only peer" checked />
-                              <div
-                                class="w-11 h-6 bg-gray-200 rounded-full dark:peer-focus:ring-indigo-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-indigo-600">
-                              </div>
-                              <span
-                                class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300 select-none">Faol</span>
-                            </label>
                           </div>
                         </div>
                       </template>
@@ -130,11 +113,6 @@
                   </div>
                 </td>
                 <td class="py-3 px-6 text-center">
-                  <button class="bg-green-200 text-green-700 py-1 px-4 rounded-full text-xs">
-                    Faol
-                  </button>
-                </td>
-                <td class="py-3 px-6 text-center">
                   <div class="flex items-center justify-center">
                     <!-- see -->
                     <Modal :activeModal="activeModal" @open="changeActive" @close="closeModal" @submit="nextModal"
@@ -159,25 +137,14 @@
                       </template>
                     </Modal>
                     <!-- edit -->
-                    <Modal :activeModal="activeModal" @open="changeActive" @close="closeModal" @submit="closeModal"
+                    <Modal :activeModal="activeModal" @open="changeActive" @close="closeModal" @submit="sendEdit(fisrtTitle)"
                       :isImage="true" title="Tahrirlash" subtitle="Joylashuvni tahrirlash" btnTextSubmit="Saqlash">
                       <template v-slot:body>
                         <div class="space-y-5 pb-5">
                           <div class="space-y-3">
-                            <p>Yangi Title kiriting uz</p>
+                            <p>Asosiy Sarlavhani kiriting</p>
                             <input type="text" placeholder="" @input="mainTitle = $event.target.value"
                               class="p-2 border dark:border-gray-600 dark:bg-gray-700 w-full rounded outline-none" />
-                          </div>
-                          <div class="space-y-3">
-                            <p>Holati</p>
-                            <label class="relative inline-flex items-center mr-5 cursor-pointer">
-                              <input type="checkbox" value="" class="sr-only peer" checked />
-                              <div
-                                class="w-11 h-6 bg-gray-200 rounded-full dark:peer-focus:ring-indigo-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-indigo-600">
-                              </div>
-                              <span
-                                class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300 select-none">Faol</span>
-                            </label>
                           </div>
                         </div>
                       </template>
@@ -208,11 +175,6 @@
                   </div>
                 </td>
                 <td class="py-3 px-6 text-center">
-                  <button class="bg-green-200 text-green-700 py-1 px-4 rounded-full text-xs">
-                    Faol
-                  </button>
-                </td>
-                <td class="py-3 px-6 text-center">
                   <div class="flex items-center justify-center">
                     <!-- see -->
                     <Modal :activeModal="activeModal" @open="changeActive" @close="closeModal" @submit="nextModal"
@@ -238,26 +200,16 @@
                       </template>
                     </Modal>
                     <!-- edit -->
-                    <Modal :activeModal="activeModal" @open="changeActive" @close="closeModal" @submit="closeModal"
+                    <Modal :activeModal="activeModal" @open="changeActive" @close="closeModal" @submit="sendEdit(heading)"
                       :isImage="true" title="Tahrirlash" subtitle="Joylashuvni tahrirlash" btnTextSubmit="Saqlash">
                       <template v-slot:body>
                         <div class="space-y-5 pb-5">
                           <div class="space-y-3">
-                            <p>Yangi Title kiriting </p>
+                            <p>Sarlavhani kiriting</p>
                             <input type="text" placeholder="" @input="second_title = $event.target.value"
                               class="p-2 border dark:border-gray-600 dark:bg-gray-700 w-full rounded outline-none" />
                           </div>
-                          <div class="space-y-3">
-                            <p>Holati</p>
-                            <label class="relative inline-flex items-center mr-5 cursor-pointer">
-                              <input type="checkbox" value="" class="sr-only peer" checked />
-                              <div
-                                class="w-11 h-6 bg-gray-200 rounded-full dark:peer-focus:ring-indigo-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-indigo-600">
-                              </div>
-                              <span
-                                class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300 select-none">Faol</span>
-                            </label>
-                          </div>
+                          
                         </div>
                       </template>
                       <template v-slot:button>
@@ -287,11 +239,6 @@
                   </div>
                 </td>
                 <td class="py-3 px-6 text-center">
-                  <button class="bg-green-200 text-green-700 py-1 px-4 rounded-full text-xs">
-                    Faol
-                  </button>
-                </td>
-                <td class="py-3 px-6 text-center">
                   <div class="flex items-center justify-center">
                     <!-- see -->
                     <Modal :activeModal="activeModal" @open="changeActive" @close="closeModal" @submit="nextModal"
@@ -316,26 +263,15 @@
                       </template>
                     </Modal>
                     <!-- edit -->
-                    <Modal :activeModal="activeModal" @open="changeActive" @close="closeModal" @submit="closeModal"
+                    <Modal :activeModal="activeModal" @open="changeActive" @close="closeModal" @submit="sendEdit(text)"
                       :isImage="true" title="Tahrirlash" subtitle="Joylashuvni tahrirlash" btnTextSubmit="Saqlash">
                       <template v-slot:body>
                         <div class="space-y-5 pb-5">
                           <div class="space-y-3">
-                            <p>Yangi matn kiriting uz</p>
+                            <p>Matn kiriting</p>
                             <textarea @input="desc = $event.target.value"   rows="4"
                             class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             placeholder="Write your thoughts here..."></textarea>
-                          </div>
-                          <div class="space-y-3">
-                            <p>Holati</p>
-                            <label class="relative inline-flex items-center mr-5 cursor-pointer">
-                              <input type="checkbox" value="" class="sr-only peer" checked />
-                              <div
-                                class="w-11 h-6 bg-gray-200 rounded-full dark:peer-focus:ring-indigo-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-indigo-600">
-                              </div>
-                              <span
-                                class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300 select-none">Faol</span>
-                            </label>
                           </div>
                         </div>
                       </template>
@@ -366,11 +302,6 @@
                   </div>
                 </td>
                 <td class="py-3 px-6 text-center">
-                  <button class="bg-green-200 text-green-700 py-1 px-4 rounded-full text-xs">
-                    Faol
-                  </button>
-                </td>
-                <td class="py-3 px-6 text-center">
                   <div class="flex items-center justify-center">
                     <!-- see -->
                     <Modal :activeModal="activeModal" @open="changeActive" @close="closeModal" @submit="nextModal"
@@ -395,26 +326,15 @@
                       </template>
                     </Modal>
                     <!-- edit -->
-                    <Modal :activeModal="activeModal" @open="changeActive" @close="closeModal" @submit="closeModal"
+                    <Modal :activeModal="activeModal" @open="changeActive" @close="closeModal" @submit="sendEdit(outlineDesc)"
                       :isImage="true" title="Tahrirlash" subtitle="Joylashuvni tahrirlash" btnTextSubmit="Saqlash">
                       <template v-slot:body>
                         <div class="space-y-5 pb-5">
                           <div class="space-y-3">
-                            <p>Yangi Title kiriting uz</p>
+                            <p>Mundarijani kiriting</p>
                             <textarea @input="outline_desc = $event.target.value"   rows="4"
                             class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             placeholder="Write your thoughts here..."></textarea>
-                          </div>
-                          <div class="space-y-3">
-                            <p>Holati</p>
-                            <label class="relative inline-flex items-center mr-5 cursor-pointer">
-                              <input type="checkbox" value="" class="sr-only peer" checked />
-                              <div
-                                class="w-11 h-6 bg-gray-200 rounded-full dark:peer-focus:ring-indigo-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-indigo-600">
-                              </div>
-                              <span
-                                class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300 select-none">Faol</span>
-                            </label>
                           </div>
                         </div>
                       </template>
@@ -445,11 +365,6 @@
                   </div>
                 </td>
                 <td class="py-3 px-6 text-center">
-                  <button class="bg-green-200 text-green-700 py-1 px-4 rounded-full text-xs">
-                    Faol
-                  </button>
-                </td>
-                <td class="py-3 px-6 text-center">
                   <div class="flex items-center justify-center">
                     <!-- see -->
                     <Modal :activeModal="activeModal" @open="changeActive" @close="closeModal" @submit="nextModal"
@@ -474,26 +389,14 @@
                       </template>
                     </Modal>
                     <!-- edit -->
-                    <Modal :activeModal="activeModal" @open="changeActive" @close="closeModal" @submit="closeModal"
+                    <Modal :activeModal="activeModal" @open="changeActive" @close="closeModal" @submit="sendEdit(link)"
                       :isImage="true" title="Tahrirlash" subtitle="Joylashuvni tahrirlash" btnTextSubmit="Saqlash">
                       <template v-slot:body>
                         <div class="space-y-5 pb-5">
                           <div class="space-y-3">
                             <p>Link kiriting </p>
-                            <textarea @input="bonusLink = $event.target.value"   rows="4"
-                            class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="Write your thoughts here..."></textarea>
-                          </div>
-                          <div class="space-y-3">
-                            <p>Holati</p>
-                            <label class="relative inline-flex items-center mr-5 cursor-pointer">
-                              <input type="checkbox" value="" class="sr-only peer" checked />
-                              <div
-                                class="w-11 h-6 bg-gray-200 rounded-full dark:peer-focus:ring-indigo-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-indigo-600">
-                              </div>
-                              <span
-                                class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300 select-none">Faol</span>
-                            </label>
+                            <input type="text" placeholder="" @input="bonusLink = $event.target.value"
+                              class="p-2 border dark:border-gray-600 dark:bg-gray-700 w-full rounded outline-none" />
                           </div>
                         </div>
                       </template>
@@ -514,14 +417,7 @@
           </table>
         </div>
       </div>
-    </div>
-
-    <!-- Saqlash/-->
-    <div class="flex justify-end mb-4" @click="sendEdit(bonus?.data[0])">
-      <button type="button"
-        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
-        Saqlash
-      </button>
+      <div class="spinner" v-if="loading"></div>
     </div>
   </div>
 </template>
@@ -554,12 +450,20 @@ const breadcrumbs = [
 
 let adminUrl = "https://superphotoshop.uz/api/dashboard"
 const bonus = ref("")
+const loading = ref(true)
 
 async function getBonus() {
+  const token = localStorage.getItem('token')
  await fetch(adminUrl + "/bonus-course", {
-
+  method:'POST',
+  headers:{
+    'Content-type':'aplication/json',
+    'Authorization': `Bearer ${token}`
+  }
+  
   }).then(res => res.json()).then(data => {
     bonus.value = data;
+    loading.value = false
   })
 }
 getBonus()
@@ -589,16 +493,34 @@ async function sendEdit(item) {
 
 
   await submitEdit(adminUrl + "/bonus-course/update?id=" + id, formdata);
-
   await getBonus()
-  mainTitle.value = ""
-  second_title.value = ""
-  desc.value = ""
-  outline_desc.value = ""
 }
 
 
 
 </script>
 
-<style scoped></style>
+<style scoped>
+  .spinner {
+  --d: 24.6px;
+  width: 4.5px;
+  height: 4.5px;
+  border-radius: 50%;
+  color: #474bff;
+  margin:200px auto;
+  box-shadow: calc(1*var(--d))      calc(0*var(--d))     0 0,
+          calc(0.707*var(--d))  calc(0.707*var(--d)) 0 1.1px,
+          calc(0*var(--d))      calc(1*var(--d))     0 2.2px,
+          calc(-0.707*var(--d)) calc(0.707*var(--d)) 0 3.4px,
+          calc(-1*var(--d))     calc(0*var(--d))     0 4.5px,
+          calc(-0.707*var(--d)) calc(-0.707*var(--d))0 5.6px,
+          calc(0*var(--d))      calc(-1*var(--d))    0 6.7px;
+  animation: spinner-a90wxe 1s infinite steps(8);
+}
+
+@keyframes spinner-a90wxe {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+</style>
