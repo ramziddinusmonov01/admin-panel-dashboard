@@ -106,12 +106,15 @@
         </div>
       </div>
     </div>
+    <pre>{{ items }}</pre>
   </nav>
+
 
 </template>
 
 <script setup>
 import { Icon } from "@iconify/vue";
 import MenuAccordion from "./MenuAccordion.vue";
+
 
 </script>

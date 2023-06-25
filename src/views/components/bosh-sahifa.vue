@@ -7,12 +7,13 @@
     <breadcump :items="breadcrumbs"></breadcump>
 
     <!-- settingsn tahrirlash/-->
-  x  <div class="overflow-x-auto dark:bg-gray-800">
+    <div class="overflow-x-auto dark:bg-gray-800">
       <div class="w-full">
         <div class="bg-white dark:bg-gray-800 shadow-md rounded my-6">
           <table class="min-w-max w-full table-auto">
             <thead>
               <tr class="bg-gray-200 dark:bg-gray-700 dark:text-gray-400 text-gray-600 uppercase text-sm leading-normal">
+                <th class="py-3 px-6 text-left">Komponent nomi</th>
                 <th class="py-3 px-6 text-left">komponentalar</th>
                 <th class="py-3 px-6 text-center">Actions</th>
               </tr>
@@ -22,6 +23,11 @@
 
               <!-- SARLAVHANI TAHRIRLASH -->
               <tr class="hover:bg-gray-100 dark:hover:bg-gray-500" v-for="title in amenities?.data" :key="title.id">
+                <td class="py-3 px-6 text-left">
+                  <div class="flex items-center">
+                    <span class="text-base font-medium text-black">Asosiy sarlavha</span>
+                  </div>
+                </td>
                 <td class="py-3 px-6 text-left">
                   <div class="flex items-center">
                     <span class="text-base font-medium">{{ title.title }}</span>
@@ -41,7 +47,7 @@
                         </div>
                       </template>
                       <template v-slot:button>
-                        <div class="w-4 mr-2 transform hover:text-blue-500 hover:scale-110">
+                        <div class=" w-8 h-8 border-2 flex items-center justify-center border-blue-500 rounded mr-2 transform hover:text-blue-500 hover:scale-110 ">
                           <svg class="w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -68,8 +74,8 @@
                       </template>
 
                       <template v-slot:button>
-                        <div class="w-4 mr-2 transform hover:text-green-500 hover:scale-110">
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <div class="w-8 h-8 border-2 flex items-center justify-center border-green-500 rounded mr-2 transform hover:text-green-500 hover:scale-110" >
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20px">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                               d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                           </svg>
@@ -82,6 +88,11 @@
 
               <!-- DESCRIPTION TAHRIRLASH -->
               <tr class="hover:bg-gray-100 dark:hover:bg-gray-500" v-for="desc in amenities?.data" :key="desc.id" >
+                <td class="py-3 px-6 text-left">
+                  <div class="flex items-center">
+                    <span class="text-base font-medium text-black">Izohlar</span>
+                  </div>
+                </td>
                 <td class="py-3 px-6 text-left">
                   <div class="flex items-center">
                     <span class="text-base font-medium">{{ desc.subtitle }}</span>
@@ -101,7 +112,7 @@
                         </div>
                       </template>
                       <template v-slot:button>
-                        <div class="w-4 mr-2 transform hover:text-blue-500 hover:scale-110">
+                        <div class="w-8 h-8 border-2 flex items-center justify-center border-blue-500 rounded mr-2 transform hover:text-blue-500 hover:scale-110">
                           <svg class="w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -128,8 +139,8 @@
                       </template>
 
                       <template v-slot:button>
-                        <div class="w-4 mr-2 transform hover:text-green-500 hover:scale-110">
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <div class="w-8 h-8 border-2 flex items-center justify-center border-green-500 rounded mr-2 transform hover:text-green-500 hover:scale-110">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20px">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                               d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                           </svg>
@@ -142,6 +153,11 @@
 
               <!-- MUALLIF  ISMINI TAHRIRLASH -->
               <tr class="hover:bg-gray-100 dark:hover:bg-gray-500" v-for="AuthorName in amenities?.data" :key="AuthorName.id">
+                <td class="py-3 px-6 text-left">
+                  <div class="flex items-center">
+                    <span class="text-base font-medium text-black">Muallif ismi</span>
+                  </div>
+                </td>
                 <td class="py-3 px-6 text-left">
                   <div class="flex items-center">
                     <span class="text-base font-medium">{{ AuthorName.name }}</span>
@@ -161,7 +177,7 @@
                         </div>
                       </template>
                       <template v-slot:button>
-                        <div class="w-4 mr-2 transform hover:text-blue-500 hover:scale-110">
+                        <div class="w-8 h-8 flex items-center justify-center border-blue-500 rounded border-2 mr-2 transform hover:text-blue-500 hover:scale-110">
                           <svg class="w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -189,8 +205,8 @@
                       </template>
 
                       <template v-slot:button>
-                        <div class="w-4 mr-2 transform hover:text-green-500 hover:scale-110">
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <div class="w-8 h-8 flex items-center justify-center border-2 border-green-500 rounded mr-2 transform hover:text-green-500 hover:scale-110">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20px">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                               d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                           </svg>
@@ -203,6 +219,11 @@
 
               <!-- HEADER LINKI TAHRIRLASH -->
               <tr class="hover:bg-gray-100 dark:hover:bg-gray-500" v-for="link in amenities?.data" :key="link.id">
+                <td class="py-3 px-6 text-left">
+                  <div class="flex items-center">
+                    <span class="text-base font-medium text-black">Link</span>
+                  </div>
+                </td>
                 <td class="py-3 px-6 text-left">
                   <div class="flex items-center">
                     <span class="text-base font-medium">{{ link.free_course_link }}</span>
@@ -222,7 +243,7 @@
                         </div>
                       </template>
                       <template v-slot:button>
-                        <div class="w-4 mr-2 transform hover:text-blue-500 hover:scale-110">
+                        <div class="w-8 h-8 flex items-center justify-center border-blue-500 border-2 rounded mr-2 transform hover:text-blue-500 hover:scale-110">
                           <svg class="w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -249,8 +270,8 @@
                       </template>
 
                       <template v-slot:button>
-                        <div class="w-4 mr-2 transform hover:text-green-500 hover:scale-110">
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <div class="w-8 h-8 border-green-500 border-2 rounded flex items-center justify-center mr-2 transform hover:text-green-500 hover:scale-110">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20px">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                               d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                           </svg>
@@ -299,7 +320,7 @@
                         </div>
                       </template>
                       <template v-slot:button>
-                        <div class="w-4 mr-2 transform hover:text-blue-500 hover:scale-110">
+                        <div class="w-8 h-8 flex items-center justify-center border-2 border-blue-500 rounded mr-2 transform hover:text-blue-500 hover:scale-110">
                           <svg class="w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -328,8 +349,8 @@
                       </template>
 
                       <template v-slot:button>
-                        <div class="w-4 mr-2 transform hover:text-green-500 hover:scale-110">
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <div class="w-8 h-8 flex items-center justify-center border-2 border-green-500 rounded mr-2 transform hover:text-green-500 hover:scale-110">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20px">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                               d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                           </svg>
@@ -362,7 +383,7 @@
                         </div>
                       </template>
                       <template v-slot:button>
-                        <div class="w-4 mr-2 transform hover:text-blue-500 hover:scale-110">
+                        <div class="w-8 h-8 flex items-center justify-center border-2 border-blue-500 rounded mr-2 transform hover:text-blue-500 hover:scale-110">
                           <svg class="w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -391,8 +412,8 @@
                       </template>
 
                       <template v-slot:button>
-                        <div class="w-4 mr-2 transform hover:text-green-500 hover:scale-110">
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <div class="w-8 h-8 flex items-center justify-center border-2 border-green-500 rounded mr-2 transform hover:text-green-500 hover:scale-110">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20px">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                               d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                           </svg>
@@ -426,7 +447,7 @@
                            </div>
                          </template>
                          <template v-slot:button>
-                           <div class="w-4 mr-2 transform hover:text-blue-500 hover:scale-110">
+                           <div class="w-8 h-8 flex items-center justify-center border-2 border-blue-500 rounded mr-2 transform hover:text-blue-500 hover:scale-110">
                              <svg class="w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                stroke="currentColor">
                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -456,8 +477,8 @@
                          </template>
    
                          <template v-slot:button>
-                           <div class="w-4 mr-2 transform hover:text-green-500 hover:scale-110">
-                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                           <div class="w-8 h-8 flex items-center justify-center border-2 border-green-500 rounded mr-2 transform hover:text-green-500 hover:scale-110">
+                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20px">
                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                  d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                              </svg>
@@ -491,7 +512,7 @@
                           </div>
                         </template>
                         <template v-slot:button>
-                          <div class="w-4 mr-2 transform hover:text-blue-500 hover:scale-110">
+                          <div class="w-8 h-8 flex items-center justify-center border-2 border-blue-500 rounded mr-2 transform hover:text-blue-500 hover:scale-110">
                             <svg class="w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                               stroke="currentColor">
                               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -521,8 +542,8 @@
                         </template>
   
                         <template v-slot:button>
-                          <div class="w-4 mr-2 transform hover:text-green-500 hover:scale-110">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <div class="w-8 h-8 flex items-center justify-center border-2 border-green-500 rounded mr-2 transform hover:text-green-500 hover:scale-110">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20px">
                               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                             </svg>
@@ -572,6 +593,7 @@ const breadcrumbs = [
 ];
 let adminUrl = "https://superphotoshop.uz/api/dashboard"
 let amenities = ref([]);
+
 
 async function getData() {
   const token = localStorage.getItem('token')

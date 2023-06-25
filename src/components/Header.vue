@@ -129,7 +129,7 @@
 
             <router-link to="/auth/login">
               <div class="py-1" >
-                <a href="#" class="block py-2 px-4 text-sm text-gray-700 dark:text-gray-200 hover:bg-primary hover:text-white" >Sign out</a>
+                <a href="#" class="block py-2 px-4 text-sm text-gray-700 dark:text-gray-200 hover:bg-primary hover:text-white" @click="removeToken()">Sign out</a>
               </div>
             </router-link>
           </div>
@@ -190,6 +190,12 @@ export default {
     // fullscreen,
     // setDarkMode,
     // loadDarkMode,
+     removeToken() {
+    // localStorage dan tokenni o'chirish
+    localStorage.removeItem('token');
+
+  // Yoki localStorage.clear() orqali barcha ma'lumotlarni o'chirish mumkin
+},
  
      
     
