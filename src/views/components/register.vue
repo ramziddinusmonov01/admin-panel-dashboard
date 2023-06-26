@@ -79,7 +79,7 @@
                         </div>
                       </template>
                       <template v-slot:button>
-                        <div class="w-4 mr-2 transform hover:text-blue-500 hover:scale-110">
+                        <div class="w-8 h-8 flex items-center justify-center border-2 border-green-500 rounded  mr-2 transform hover:text-blue-500 hover:scale-110">
                           <svg class="w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -97,8 +97,8 @@
                       :isImage="true" title="O'chirish" subtitle="Siz haqiqatdan ham bu elementi o'chirishni xohlaysizmi"
                       btnTextSubmit="O'chirish" btnColorSubmit="bg-red-500">
                       <template v-slot:button>
-                        <div class="w-4 mr-2 transform hover:text-red-500 hover:scale-110">
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <div class="w-8 h-8 flex items-center justify-center border-2 border-red-500 rounded  mr-2 transform hover:text-red-500 hover:scale-110">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20px">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                               d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                           </svg>
@@ -220,26 +220,5 @@ async function changeStatus(item) {
   transition: 0.5s linear;
   color: white;
 }
-.spinner {
-  --d: 24.6px;
-  width: 4.5px;
-  height: 4.5px;
-  border-radius: 50%;
-  color: #474bff;
-  margin:200px auto;
-  box-shadow: calc(1*var(--d))      calc(0*var(--d))     0 0,
-          calc(0.707*var(--d))  calc(0.707*var(--d)) 0 1.1px,
-          calc(0*var(--d))      calc(1*var(--d))     0 2.2px,
-          calc(-0.707*var(--d)) calc(0.707*var(--d)) 0 3.4px,
-          calc(-1*var(--d))     calc(0*var(--d))     0 4.5px,
-          calc(-0.707*var(--d)) calc(-0.707*var(--d))0 5.6px,
-          calc(0*var(--d))      calc(-1*var(--d))    0 6.7px;
-  animation: spinner-a90wxe 1s infinite steps(8);
-}
 
-@keyframes spinner-a90wxe {
-  100% {
-    transform: rotate(1turn);
-  }
-}
 </style>

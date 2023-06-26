@@ -58,7 +58,7 @@
                         </div>
                       </template>
                       <template v-slot:button>
-                        <div class="w-4 mr-2 transform hover:text-blue-500 hover:scale-110">
+                        <div class="w-8 h-8 flex items-center justify-center border-2 border-blue-500 rounded  mr-2 transform hover:text-blue-500 hover:scale-110">
                           <svg class="w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -85,8 +85,8 @@
                         </div>
                       </template>
                       <template v-slot:button>
-                        <div class="w-4 mr-2 transform hover:text-green-500 hover:scale-110">
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <div class="w-8 h-8 flex items-center justify-center border-2 border-green-500 rounded  mr-2 transform hover:text-green-500 hover:scale-110">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20px">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                               d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                           </svg>
@@ -125,7 +125,7 @@
                         </div>
                       </template>
                       <template v-slot:button>
-                        <div class="w-4 mr-2 transform hover:text-blue-500 hover:scale-110">
+                        <div class="w-8 h-8 flex items-center justify-center border-2 border-blue-500 rounded mr-2 transform hover:text-blue-500 hover:scale-110">
                           <svg class="w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -149,8 +149,8 @@
                         </div>
                       </template>
                       <template v-slot:button>
-                        <div class="w-4 mr-2 transform hover:text-green-500 hover:scale-110">
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <div class="w-8 h-8 flex items-center justify-center border-2 border-green-500 rounded  mr-2 transform hover:text-green-500 hover:scale-110">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20px">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                               d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                           </svg>
@@ -188,7 +188,7 @@
                         </div>
                       </template>
                       <template v-slot:button>
-                        <div class="w-4 mr-2 transform hover:text-blue-500 hover:scale-110">
+                        <div class="w-8 h-8 flex items-center justify-center border-2 border-blue-500 rounded  mr-2 transform hover:text-blue-500 hover:scale-110">
                           <svg class="w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -213,8 +213,8 @@
                         </div>
                       </template>
                       <template v-slot:button>
-                        <div class="w-4 mr-2 transform hover:text-green-500 hover:scale-110">
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <div class="w-8 h-8 flex items-center justify-center border-2 border-green-500 rounded  mr-2 transform hover:text-green-500 hover:scale-110">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20px">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                               d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                           </svg>
@@ -251,7 +251,7 @@
                         </div>
                       </template>
                       <template v-slot:button>
-                        <div class="w-4 mr-2 transform hover:text-blue-500 hover:scale-110">
+                        <div class="w-8 h-8 flex items-center justify-center border-2 border-blue-500 rounded  mr-2 transform hover:text-blue-500 hover:scale-110">
                           <svg class="w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -276,8 +276,8 @@
                         </div>
                       </template>
                       <template v-slot:button>
-                        <div class="w-4 mr-2 transform hover:text-green-500 hover:scale-110">
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <div class="w-8 h-8 flex items-center justify-center border-2 border-green-500 rounded  mr-2 transform hover:text-green-500 hover:scale-110">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20px">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                               d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                           </svg>
@@ -314,7 +314,7 @@
                         </div>
                       </template>
                       <template v-slot:button>
-                        <div class="w-4 mr-2 transform hover:text-blue-500 hover:scale-110">
+                        <div class="w-8 h-8 flex items-center justify-center border-2 border-blue-500 rounded  mr-2 transform hover:text-blue-500 hover:scale-110">
                           <svg class="w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -339,8 +339,8 @@
                         </div>
                       </template>
                       <template v-slot:button>
-                        <div class="w-4 mr-2 transform hover:text-green-500 hover:scale-110">
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <div class="w-8 h-8 flex items-center justify-center border-2 border-green-500 rounded  mr-2 transform hover:text-green-500 hover:scale-110">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20px">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                               d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                           </svg>
@@ -377,7 +377,7 @@
                         </div>
                       </template>
                       <template v-slot:button>
-                        <div class="w-4 mr-2 transform hover:text-blue-500 hover:scale-110">
+                        <div class="w-8 h-8 flex items-center justify-center border-2 border-blue-500 rounded  mr-2 transform hover:text-blue-500 hover:scale-110">
                           <svg class="w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -401,8 +401,8 @@
                         </div>
                       </template>
                       <template v-slot:button>
-                        <div class="w-4 mr-2 transform hover:text-green-500 hover:scale-110">
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <div class="w-8 h-8 flex items-center justify-center border-2 border-green-500 rounded  mr-2 transform hover:text-green-500 hover:scale-110">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20px">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                               d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                           </svg>
@@ -501,26 +501,5 @@ async function sendEdit(item) {
 </script>
 
 <style scoped>
-  .spinner {
-  --d: 24.6px;
-  width: 4.5px;
-  height: 4.5px;
-  border-radius: 50%;
-  color: #474bff;
-  margin:200px auto;
-  box-shadow: calc(1*var(--d))      calc(0*var(--d))     0 0,
-          calc(0.707*var(--d))  calc(0.707*var(--d)) 0 1.1px,
-          calc(0*var(--d))      calc(1*var(--d))     0 2.2px,
-          calc(-0.707*var(--d)) calc(0.707*var(--d)) 0 3.4px,
-          calc(-1*var(--d))     calc(0*var(--d))     0 4.5px,
-          calc(-0.707*var(--d)) calc(-0.707*var(--d))0 5.6px,
-          calc(0*var(--d))      calc(-1*var(--d))    0 6.7px;
-  animation: spinner-a90wxe 1s infinite steps(8);
-}
 
-@keyframes spinner-a90wxe {
-  100% {
-    transform: rotate(1turn);
-  }
-}
 </style>

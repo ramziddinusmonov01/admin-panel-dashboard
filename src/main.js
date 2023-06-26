@@ -10,6 +10,7 @@ import Vuelidate from 'vuelidate'
 import "./assets/tailwind.css";
 import "./assets/animate.css";
 import "./assets/sass/css/windzo.css";
+import "./assets/main.css"
 import vClickOutside from "click-outside-vue3";
 
 const app = createApp(App);

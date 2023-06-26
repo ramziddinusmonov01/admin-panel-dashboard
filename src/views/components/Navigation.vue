@@ -169,17 +169,18 @@
       </div>
     </div>
   </div>
-  <pre>{{ items }}</pre>
   
   <div class="spinner" v-if="loading"></div>
 </template>
 
 
 <script setup>
+import { useVuelidate } from '@vuelidate/core'
+import { required,  } from '@vuelidate/validators'
 import { useRouter } from "vue-router";
 import Modal from "@/components/modal.vue";
 import Breadcump from "@/components/Breadcump.vue";
-import { ref, onMounted } from "vue";
+import { ref, onMounted, reactive } from "vue";
 const router = useRouter()
 import {
   activeModal,
@@ -216,7 +217,12 @@ onMounted(() => {
   getData();
 });
 
-const add_name = ref("");
+
+const add_name = ref("")
+
+
+
+
 const edit_name = ref("");
 const add_status = ref(true);
 const edit_status = ref(true);
@@ -227,14 +233,15 @@ function openEdit(item) {
 }
 
 async function sendAdd() {
+ 
   let formdata = new FormData();
   formdata.append("category_name", add_name.value);
-  formdata.append("status", add_status.value ? 1 : 0);
+  formdata.append("status", add_status.value ? 1 : 0);  
 
-  await submitAdd(adminUrl + "/navbar-category/create", formdata);
-  await getData();
+    await submitAdd(adminUrl + "/navbar-category/create", formdata);
+    await getData();
 
-  add_name.value = "";
+
 }
 
 async function sendEdit(item) {
@@ -246,7 +253,7 @@ async function sendEdit(item) {
   await submitEdit(adminUrl + "/navbar-category/update?id=" + id, formdata);
   await getData();
 
-  edit_name.value = "";
+
 }
 
 async function sendDelete(item) {
@@ -269,27 +276,6 @@ const breadcrumbs = [
 </script>
 
 <style scoped>
-.spinner {
-  --d: 24.6px;
-  width: 4.5px;
-  height: 4.5px;
-  border-radius: 50%;
-  color: #474bff;
-  margin-top: 200px;
-  box-shadow: calc(1*var(--d))      calc(0*var(--d))     0 0,
-          calc(0.707*var(--d))  calc(0.707*var(--d)) 0 1.1px,
-          calc(0*var(--d))      calc(1*var(--d))     0 2.2px,
-          calc(-0.707*var(--d)) calc(0.707*var(--d)) 0 3.4px,
-          calc(-1*var(--d))     calc(0*var(--d))     0 4.5px,
-          calc(-0.707*var(--d)) calc(-0.707*var(--d))0 5.6px,
-          calc(0*var(--d))      calc(-1*var(--d))    0 6.7px;
-  animation: spinner-a90wxe 1s infinite steps(8);
-}
 
-@keyframes spinner-a90wxe {
-  100% {
-    transform: rotate(1turn);
-  }
-}
 </style>
 
