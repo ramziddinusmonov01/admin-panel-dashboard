@@ -16,6 +16,7 @@ import DarslikdanFoydalanish from "../views/components/darslikdanFoydalanish.vue
 import RarslinkdanFoydalanishImg from "../views/components/darslikdanFoydalanishImg.vue"
 import Bonus from "../views/components/Bonus.vue";
 import Bonusimg from "../views/components/bonus-img.vue"
+import TranslateManeger from "../views/components/translate-maneger.vue"
 
 import register from "../views/components/register.vue";
 import footer from "../views/components/footer.vue";
@@ -120,6 +121,12 @@ const routes = [
     meta: { title: "socials" + appname },
   },
   {
+    path: "/component/tranlate-maneger",
+    name: "tranlate-maneger",
+    component: TranslateManeger,
+    meta: { title: "tranlate-maneger" + appname },
+  },
+  {
     path: "/author/about",
     name: "authorMain",
     component: authorMain,
@@ -131,7 +138,6 @@ const routes = [
     component: authorImages,
     meta: { title: "authorImages" + appname },
   },
-
 
 
   // layouts

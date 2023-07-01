@@ -65,7 +65,7 @@
                         <div class="space-y-5 pb-5">
                           <div class="space-y-3">
                             <p>Bosh sahifa sarlavhasini kiriting</p>
-                            <input type="text" placeholder="" @input="headerTitleONe = $event.target.value" :v-model="title.title"
+                            <input type="text" placeholder="" @input="headerTitleONe = $event.target.value" :value="title.title"
                               
                               class="p-2 border dark:border-gray-600 dark:bg-gray-700 w-full rounded outline-none" />
                           </div>
@@ -506,7 +506,7 @@
                           <div class="flex justify-start gap-12">
                             <div class="flex flex-col items-start gap-6">
                               <span class="font-medium text-lg flex-1">
-                                <img :src="headerVideo.video_url" alt="image">
+                                <video :src="headerVideo.video_url" controls></video>
                               </span>
                             </div>
                           </div>
@@ -641,8 +641,9 @@ function editVideo(event) {
 
 
 async function sendEdit(title) {
-  const id = title
-  let formdata = new FormData();
+  const id = title.id
+  console.log(title);
+  let formdata = new FormData();  
   formdata.append("title", headerTitleONe.value);
   formdata.append("subtitle", headerTitleTwo.value);
   formdata.append("name", headerName.value);
@@ -652,8 +653,8 @@ async function sendEdit(title) {
   formdata.append("photo", headerAuthorImg.value);
   formdata.append("video_url", headerVideo.value);
 
- await submitEdit( adminUrl + `/header-section/update?id=${id}`, formdata);
- await getData();
+  await submitEdit( adminUrl + "/header-section/update?id=" + id, formdata);
+  await getData();
 }
 
 

@@ -192,7 +192,6 @@ async function sendEdit(item) {
 
   edit_title.value = ''
   edit_image.value = ''
-  edit_status.value = true
 }
 
 const breadcrumbs = [

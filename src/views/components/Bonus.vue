@@ -143,7 +143,7 @@
                         <div class="space-y-5 pb-5">
                           <div class="space-y-3">
                             <p>Asosiy Sarlavhani kiriting</p>
-                            <input type="text" placeholder="" @input="mainTitle = $event.target.value"
+                            <input type="text" placeholder="" @input="mainTitle = $event.target.value" :value="fisrtTitle.main_title"
                               class="p-2 border dark:border-gray-600 dark:bg-gray-700 w-full rounded outline-none" />
                           </div>
                         </div>
@@ -206,7 +206,7 @@
                         <div class="space-y-5 pb-5">
                           <div class="space-y-3">
                             <p>Sarlavhani kiriting</p>
-                            <input type="text" placeholder="" @input="second_title = $event.target.value"
+                            <input type="text" placeholder="" @input="second_title = $event.target.value" :value="heading.title"
                               class="p-2 border dark:border-gray-600 dark:bg-gray-700 w-full rounded outline-none" />
                           </div>
                           
@@ -269,7 +269,7 @@
                         <div class="space-y-5 pb-5">
                           <div class="space-y-3">
                             <p>Matn kiriting</p>
-                            <textarea @input="desc = $event.target.value"   rows="4"
+                            <textarea @input="desc = $event.target.value" :value="text.description"   rows="4"
                             class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             placeholder="Write your thoughts here..."></textarea>
                           </div>
@@ -332,7 +332,7 @@
                         <div class="space-y-5 pb-5">
                           <div class="space-y-3">
                             <p>Mundarijani kiriting</p>
-                            <textarea @input="outline_desc = $event.target.value"   rows="4"
+                            <textarea @input="outline_desc = $event.target.value"   rows="4" :value="outlineDesc.outline"
                             class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             placeholder="Write your thoughts here..."></textarea>
                           </div>
@@ -395,7 +395,7 @@
                         <div class="space-y-5 pb-5">
                           <div class="space-y-3">
                             <p>Link kiriting </p>
-                            <input type="text" placeholder="" @input="bonusLink = $event.target.value"
+                            <input type="text" placeholder="" @input="bonusLink = $event.target.value" :value="link.sign_up_link"
                               class="p-2 border dark:border-gray-600 dark:bg-gray-700 w-full rounded outline-none" />
                           </div>
                         </div>
