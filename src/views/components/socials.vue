@@ -284,7 +284,7 @@ async function sendEdit(item) {
   let formdata = new FormData()
   formdata.append('social_name', edit_name.value)
   formdata.append('social_link', edit_link.value)
-  formdata.append('social_icon', edit_link.value)
+  formdata.append('social_icon', add_icon.value)
   formdata.append('status', edit_status.value ? 1 : 0)
 
   await submitEdit(adminUrl + '/social-network/update?id=' + id, formdata)
